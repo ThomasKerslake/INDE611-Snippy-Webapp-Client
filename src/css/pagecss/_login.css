@@ -1,0 +1,43 @@
+#formContainer {
+  text-align: center;
+  color: black;
+}
+
+#snippyLogo {
+  transform: scale(0.6);
+  padding: 0;
+  margin: 50px auto 20px auto;
+}
+
+#logoName {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4em;
+}
+
+#email,
+#password {
+  margin: 10px auto 10px auto;
+  color: black;
+}
+
+#loginButton {
+  margin-top: 15px;
+  position: relative;
+}
+
+#incorrectError {
+  color: red;
+  font-size: 0.9em;
+  display: block;
+  margin: 10px auto 10px auto;
+}
+
+#noAccountRedirect {
+  font-size: 0.9em;
+  display: block;
+  margin: 10px auto 10px auto;
+}
+
+#loadingSpin {
+  position: absolute;
+}

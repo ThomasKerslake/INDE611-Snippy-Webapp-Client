@@ -1,0 +1,17 @@
+#cardContent {
+  padding: 25px;
+}
+
+#cardImage {
+  min-width: 200px;
+  object-fit: cover;
+}
+
+#card {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#snippetCode {
+  font-family: "Source Code Pro", monospace;
+}

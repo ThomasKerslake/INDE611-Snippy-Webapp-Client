@@ -1,0 +1,6 @@
+/* Fonts for snippy */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Source+Code+Pro&display=swap");
+
+/* Spilt up stylesheets to be easier / cleaner */
+@import "elements/_snippets.css";
+@import "pagecss/_login.css";
