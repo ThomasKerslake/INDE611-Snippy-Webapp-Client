@@ -8,6 +8,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 //Getting snippy logo
 import snipLogo from "../images/snippyLogoName.png";
+//React-Redux
+import { connect } from "react-redux";
+import { userLogin } from "../redux/actions/userActions";
 
 class login extends Component {
   constructor() {
@@ -15,38 +18,26 @@ class login extends Component {
     this.state = {
       email: "",
       password: "",
-      loading: false,
       errors: {},
     };
   }
 
+  //seting the errors we get to the local errors so they show to the user
+  componentWillReceiveProps(newProps) {
+    if (newProps.UI.errors) {
+      this.setState({ errors: newProps.UI.errors });
+    }
+  }
+
   takeSubmit = (eventSub) => {
     eventSub.preventDefault();
-    this.setState({
-      loading: true,
-    });
-
     //getting states
     const userInfo = {
       email: this.state.email,
       password: this.state.password,
     };
-    axios
-      .post("/login", userInfo)
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          loading: false,
-        });
-        //send user to '/' directory
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        this.setState({
-          errors: err.response.data,
-          loading: false,
-        });
-      });
+    //Taken from login.props
+    this.props.userLogin(userInfo, this.props.history);
   };
 
   //Getting the value of field (name) and setting state (value)
@@ -57,7 +48,11 @@ class login extends Component {
   };
 
   render() {
-    const { errors, loading } = this.state;
+    const { errors } = this.state;
+    // Setting UI loading prop that is no longer set in login state
+    const {
+      UI: { loading },
+    } = this.props;
 
     return (
       <Grid container id="formContainer">
@@ -119,6 +114,16 @@ class login extends Component {
   }
 }
 
-login.propTypes = {};
+login.propTypes = {
+  userLogin: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired,
+};
 
-export default login;
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+//should normally 'map actions to props' but as we are only using 'userLogin' its not needed.
+export default connect(mapStateToProps, { userLogin })(login);
