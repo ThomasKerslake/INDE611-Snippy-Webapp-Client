@@ -4,11 +4,14 @@ import "./App.css";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
 import "./css/main.css";
 
 //React-Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { SET_AUTHENTICATED } from "./redux/types";
+import { userLogout, getUserInfo } from "./redux/actions/userActions";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -38,16 +41,17 @@ const myTheme = createMuiTheme({
 
 //Checking for local user token from a logged in user
 const userToken = localStorage.userTokenId;
-let userAuthenticated;
 if (userToken) {
   const decodedUserToken = jwtDecode(userToken);
   //Get the user token expire time (which is stored in seconds) * 1000 to convert time from seconds
   //If less than (now) -> expired -> send user to login
   if (decodedUserToken.exp * 1000 < Date.now()) {
+    store.dispatch(userLogout());
     window.location.href = "/login";
-    userAuthenticated = false;
   } else {
-    userAuthenticated = true;
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common["Authorization"] = userToken;
+    store.dispatch(getUserInfo());
   }
 }
 //Wrap app in provider so everything has access to the store for G state management
@@ -61,18 +65,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <AuthRoute
-                  exact
-                  path="/login"
-                  component={login}
-                  userAuthenticated={userAuthenticated}
-                />
-                <AuthRoute
-                  exact
-                  path="/signup"
-                  component={signup}
-                  userAuthenticated={userAuthenticated}
-                />
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
               </Switch>
             </div>
           </BRouter>

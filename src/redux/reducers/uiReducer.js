@@ -6,6 +6,7 @@ const initialState = {
   errors: null,
 };
 
+//Used to check and show errors / loading across the application
 export default function (state = initialState, action) {
   switch (action.type) {
     case SET_ERRORS:

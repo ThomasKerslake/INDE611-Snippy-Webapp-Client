@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import axios from "axios";
 import { Link } from "react-router-dom";
 //Getting snippy logo
 import snipLogo from "../images/snippyLogoName.png";
@@ -25,6 +24,7 @@ class login extends Component {
   //seting the errors we get to the local errors so they show to the user
   componentWillReceiveProps(newProps) {
     if (newProps.UI.errors) {
+      //if errors exist
       this.setState({ errors: newProps.UI.errors });
     }
   }
@@ -36,7 +36,7 @@ class login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    //Taken from login.props
+    //Taken from login props that has had the global props added to it (see more at bottom)
     this.props.userLogin(userInfo, this.props.history);
   };
 
@@ -49,7 +49,8 @@ class login extends Component {
 
   render() {
     const { errors } = this.state;
-    // Setting UI loading prop that is no longer set in login state
+    // Setting UI loading prop that is no longer set in login state but is now a prop
+    // taken from the mapping global props
     const {
       UI: { loading },
     } = this.props;
@@ -120,10 +121,11 @@ login.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 
+//Bringing in the user and UI from the global state to be used within this login component
 const mapStateToProps = (state) => ({
   user: state.user,
   UI: state.UI,
 });
 
-//should normally 'map actions to props' but as we are only using 'userLogin' its not needed.
+//should normally 'map actions to props' but as I'm only using 'userLogin' its not needed.
 export default connect(mapStateToProps, { userLogin })(login);

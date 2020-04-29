@@ -4,8 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import axios from "axios";
 import { Link } from "react-router-dom";
+
+//react/redux
+import { connect } from "react-redux";
+import { userSignup } from "../redux/actions/userActions";
 //Getting snippy logo
 import snipLogo from "../images/snippyLogoName.png";
 
@@ -17,9 +20,16 @@ class signup extends Component {
       password: "",
       confirmPassword: "",
       userName: "",
-      loading: false,
       errors: {},
     };
+  }
+
+  //seting the errors we get to the local errors so they show to the user
+  componentWillReceiveProps(newProps) {
+    if (newProps.UI.errors) {
+      //if errors exist
+      this.setState({ errors: newProps.UI.errors });
+    }
   }
 
   takeSubmit = (eventSub) => {
@@ -35,23 +45,8 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       userName: this.state.userName,
     };
-    axios
-      .post("/signup", newUserInfo)
-      .then((res) => {
-        //console.log(res.data);
-        localStorage.setItem("userTokenId", `Bearer ${res.data.token}`);
-        this.setState({
-          loading: false,
-        });
-        //send user to '/' directory
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        this.setState({
-          errors: err.response.data,
-          loading: false,
-        });
-      });
+    //Using the signup function from userActions that is added here from the global state (see bottem)
+    this.props.userSignup(newUserInfo, this.props.history);
   };
 
   //Getting the value of field (name) and setting state (value)
@@ -62,7 +57,10 @@ class signup extends Component {
   };
 
   render() {
-    const { errors, loading } = this.state;
+    const {
+      UI: { loading },
+    } = this.props;
+    const { errors } = this.state;
 
     return (
       <Grid container id="formContainer">
@@ -148,6 +146,18 @@ class signup extends Component {
   }
 }
 
-signup.propTypes = {};
+signup.propTypes = {
+  userSignup: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired,
+};
 
-export default signup;
+//Bringing in the user and UI from the global state to be used within this signup component
+//This is due to needing to use the states for users signing up
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+//should normally 'map actions to props' but as I'm only using 'userSignup' its not needed.
+export default connect(mapStateToProps, { userSignup })(signup);
