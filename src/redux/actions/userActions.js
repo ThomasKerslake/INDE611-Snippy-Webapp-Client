@@ -4,6 +4,7 @@ import {
   CLEAR_ERRORS,
   LOADING_UI,
   SET_UNAUTHENTICATED,
+  LOADING_USER,
 } from "../types";
 import axios from "axios";
 //Taken from the login.js -> logging in a user
@@ -46,6 +47,7 @@ export const userSignup = (newUserInfo, history) => (dispatch) => {
 };
 
 export const getUserInfo = () => (dispatch) => {
+  dispatch({ type: LOADING_USER }); //Set to loading
   axios
     .get("/user")
     .then((res) => {

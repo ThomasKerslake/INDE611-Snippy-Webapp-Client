@@ -3,4 +3,86 @@
 
 /* Spilt up stylesheets to be easier / cleaner */
 @import "elements/_snippets.css";
+@import "elements/_userProfileCard.css";
 @import "pagecss/_login&signup.css";
+
+/* Anything in the main.css file is to be used globally */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.3em;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.2em;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+  font-size: 1.1em;
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+h1::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+h2::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+h3::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+h4::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+span::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+p::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+a::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+img::selection {
+  background-color: #c576ed;
+  color: white;
+}
+
+li::selection {
+  background-color: #c576ed;
+  color: white;
+}
