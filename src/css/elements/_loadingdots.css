@@ -1,0 +1,85 @@
+ul {
+  list-style-type: none;
+}
+
+.load {
+  margin-top: 10px;
+}
+
+.dotBox1,
+.dotBox2,
+.dotBox3,
+.dotBox4 {
+  width: 150px;
+  height: 0px;
+  z-index: -1;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dot1 {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #c06cfc;
+  margin: 0 120px;
+}
+
+.dot2 {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f7ce52;
+  margin: 0 80px;
+}
+
+.dot3 {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f696af;
+  margin: 0 40px;
+}
+
+.dot4 {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #b5ddf4;
+  margin: 0 0;
+}
+
+.dotBox1 {
+  transform: translateY(-10px);
+  animation: Loading 1s ease infinite;
+  animation-delay: 0.4s;
+}
+.dotBox2 {
+  transform: translateY(-10px);
+  animation: Loading 1s ease infinite;
+  animation-delay: 0.3s;
+}
+.dotBox3 {
+  transform: translateY(-10px);
+  animation: Loading 1s ease infinite;
+  animation-delay: 0.2s;
+}
+.dotBox4 {
+  transform: translateY(-10px);
+  animation: Loading 1s ease infinite;
+  animation-delay: 0.1s;
+}
+
+@keyframes Loading {
+  0% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}

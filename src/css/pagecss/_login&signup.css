@@ -1,13 +1,17 @@
-/*--------------------------Login----------------------------*/
+/*-----------------IDs-MUI----------------*/
+span {
+  z-index: 1;
+}
+
 #formContainer {
   text-align: center;
   color: black;
 }
 
 #snippyLogo {
-  transform: scale(0.6);
+  transform: scale(0.35);
   padding: 0;
-  margin: 50px auto 20px auto;
+  margin: 50px auto 10px auto;
 }
 
 #logoName {
@@ -22,7 +26,7 @@
 }
 
 #loginButton {
-  margin-top: 15px;
+  margin-top: 35px;
   position: relative;
 }
 
@@ -34,13 +38,178 @@
 }
 
 #noAccountRedirect {
+  font-family: "Montserrat", sans-serif;
   font-size: 0.9em;
   display: block;
-  margin: 10px auto 10px auto;
+  margin: 35px auto 10px auto;
+}
+
+.bringForward {
+  position: relative;
+  z-index: 3;
 }
 
 #loadingSpin {
   position: absolute;
+}
+/*-------------------------Login&SignupPageDesign---------------------*/
+
+.logoContainer {
+  width: auto;
+  height: 10px;
+}
+
+.loginLogo {
+  transform: scale(0.32);
+  height: auto;
+  margin: 0px 10px 10px 10px;
+}
+
+/*-------------------------------SVGS--------------------------------*/
+.purpleLoginSVG {
+  position: absolute;
+  top: -570px;
+  right: -180px;
+  z-index: -3;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.yellowLoginSVG {
+  position: absolute;
+  top: -690px;
+  right: -120px;
+  z-index: -4;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.redLoginSVG {
+  position: absolute;
+  top: -140px;
+  right: -70px;
+  z-index: -5;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.svgBG {
+  position: absolute;
+  top: 200px;
+  right: -70px;
+  z-index: -7;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.svgShadowYellowLogin {
+  -webkit-filter: drop-shadow(-25px 35px 0px rgba(0, 0, 0, 0.05));
+  filter: drop-shadow(-25px 35px 0px rgba(0, 0, 0, 0.05));
+}
+
+.svgShadowPurpleLogin {
+  -webkit-filter: drop-shadow(-40px 0px 0px rgba(0, 0, 0, 0.05));
+  filter: drop-shadow(-40px 0px 0px rgba(0, 0, 0, 0.05));
+}
+
+.svgShadowRedLogin {
+  -webkit-filter: drop-shadow(10px -40px 0px rgba(0, 0, 0, 0.05));
+  filter: drop-shadow(-30px 25px 0px rgba(0, 0, 0, 0.05));
+}
+
+/*----------------------------WelcomeTextCSS----------------------------*/
+
+.welcomeTextContainer {
+  z-index: -2;
+}
+
+.welcomeText-1,
+.welcomeText-2,
+.welcomeText-3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  z-index: -2;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
+.welcomeText-1 {
+  position: absolute;
+  top: 140px;
+  left: 920px;
+  font-size: 9em;
+  color: white;
+}
+.welcomeText-2 {
+  position: absolute;
+  top: 585px;
+  left: 940px;
+  font-size: 2.5em;
+  color: #bb697e;
+}
+.welcomeText-3 {
+  position: absolute;
+  top: 830px;
+  right: 100px;
+  font-size: 2.5em;
+  color: #73a1bc;
+}
+
+/*--------------------------------Login&Signup-----------------------------------*/
+
+.loginSignupContainer {
+  background-color: white;
+  width: 800px;
+  height: 100vh;
+  text-align: center;
+  z-index: 3;
+}
+
+#symbolBG {
+  position: absolute;
+  background-repeat: repeat-y;
+  background-size: cover;
+  z-index: 0;
+}
+
+.centerLogin {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spaceBlock {
+  padding-top: 150px;
+}
+
+.backHomeBtn {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #4d4d4d;
+  border-bottom: 2px solid white;
+  cursor: pointer;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
+.backHomeBtn:hover {
+  border-bottom: 4px solid #c576ed;
+}
+
+.backArrow {
+  margin-right: 5px;
+  margin-bottom: -5px;
+  transform: scale(0.8);
 }
 
 /*--------------------------Sign-up---------------------------*/
@@ -49,4 +218,131 @@
 #userName {
   margin: 10px auto 10px auto;
   color: black;
+}
+
+/*----------------------------Quries---------------------------*/
+
+/* MAC Large screen */
+@media (min-width: 2000px) {
+  .loginSignupContainer {
+    width: 1000px;
+    height: 100vh;
+    text-align: center;
+  }
+
+  .welcomeText-1 {
+    position: absolute;
+    top: 200px;
+    left: 1080px;
+    font-size: 8em;
+  }
+  .welcomeText-2 {
+    position: absolute;
+    top: 545px;
+    left: 1090px;
+    font-size: 2em;
+  }
+  .welcomeText-3 {
+    position: absolute;
+    top: 830px;
+    right: 280px;
+    font-size: 2em;
+  }
+}
+
+/* Desktop HD */
+@media (max-width: 1800px) {
+}
+
+/* Desktop HD */
+@media (max-width: 1620px) {
+  .purpleLoginSVG {
+    top: -550px;
+    right: -480px;
+  }
+
+  .yellowLoginSVG {
+    position: absolute;
+    top: -520px;
+    right: -120px;
+    transform: rotate(20deg);
+  }
+
+  .redLoginSVG {
+    position: absolute;
+    top: -180px;
+    right: -170px;
+    transform: rotate(30deg);
+  }
+
+  .welcomeText-1 {
+    position: absolute;
+    top: 200px;
+    left: 840px;
+    font-size: 8em;
+  }
+  .welcomeText-2 {
+    position: absolute;
+    top: 545px;
+    left: 1050px;
+    font-size: 2em;
+  }
+  .welcomeText-3 {
+    position: absolute;
+    top: 830px;
+    right: 280px;
+    font-size: 2em;
+  }
+}
+
+/*  Desktop */
+@media (max-width: 1380px) {
+  .welcomeText-1 {
+    position: absolute;
+    top: 200px;
+    left: 840px;
+    font-size: 8em;
+  }
+  .welcomeText-2 {
+    position: absolute;
+    top: 545px;
+    left: 940px;
+    font-size: 2em;
+  }
+  .welcomeText-3 {
+    position: absolute;
+    top: 830px;
+    right: 140px;
+    font-size: 2em;
+  }
+}
+
+/* Small Desktop */
+@media (max-width: 1250px) {
+  .welcomeText-1,
+  .welcomeText-2,
+  .welcomeText-3 {
+    display: none;
+  }
+
+  .loginSignupContainer {
+    overflow-y: scroll !important;
+  }
+}
+
+/* tablet */
+@media (max-width: 850px) {
+  .purpleLoginSVG {
+    transition: 0.8s;
+    -moz-transition: 0.8;
+    -webkit-transition: 0.8;
+  }
+}
+
+/* phablet */
+@media (max-width: 650px) {
+}
+
+/* mobile */
+@media (max-width: 400px) {
 }

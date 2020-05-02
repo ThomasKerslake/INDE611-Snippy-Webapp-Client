@@ -11,8 +11,9 @@ import Button from "@material-ui/core/Button";
 import InsertLinkIcon from "@material-ui/icons/InsertLink";
 import TodayIcon from "@material-ui/icons/Today";
 import CloseIcon from "@material-ui/icons/Close";
-//Images
+//Images / Other
 import NotaMember from "../images/NotaMember.png";
+import Loadingdots from "../components/Loadingdots.js";
 
 class Userprofile extends Component {
   render() {
@@ -109,7 +110,7 @@ class Userprofile extends Component {
         </>
       )
     ) : (
-      <p>Loading... Put loading animation here</p>
+      <Loadingdots />
     );
 
     return userProfileCard;

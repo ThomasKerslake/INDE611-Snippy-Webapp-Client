@@ -14,7 +14,6 @@ import { SET_AUTHENTICATED } from "./redux/types";
 import { userLogout, getUserInfo } from "./redux/actions/userActions";
 
 //Components
-import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
 
 //My pages
@@ -59,14 +58,11 @@ class App extends Component {
       <MuiThemeProvider theme={myTheme}>
         <Provider store={store}>
           <BRouter>
-            <Navbar />
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={home} />
-                <AuthRoute exact path="/login" component={login} />
-                <AuthRoute exact path="/signup" component={signup} />
-              </Switch>
-            </div>
+            <Switch>
+              <Route exact path="/" component={home} />
+              <AuthRoute exact path="/login" component={login} />
+              <AuthRoute exact path="/signup" component={signup} />
+            </Switch>
           </BRouter>
         </Provider>
       </MuiThemeProvider>

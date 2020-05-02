@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import { Link } from "react-router-dom";
-//Getting snippy logo
+//Getting images
 import snipLogo from "../images/snippyLogoName.png";
+import symbolBG from "../images/SmallBG.png";
+//Components
+import Loadingdots from "../components/Loadingdots.js";
+import LoginSVGs from "../components/pagesvgs/LoginSVGs.js";
 //React-Redux
 import { connect } from "react-redux";
 import { userLogin } from "../redux/actions/userActions";
+//Icons
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+
+const overflowSET = "overflowSwitch";
 
 class login extends Component {
   constructor() {
@@ -19,6 +25,15 @@ class login extends Component {
       password: "",
       errors: {},
     };
+  }
+
+  //Used to set the bodies overflow to hidden when login mounts
+  componentDidMount() {
+    document.body.classList.add(overflowSET);
+  }
+  //Used to remove style overflowSet when login unmounts so its not affecting other pages
+  componentWillUnmount() {
+    document.body.classList.remove(overflowSET);
   }
 
   //seting the errors we get to the local errors so they show to the user
@@ -56,61 +71,72 @@ class login extends Component {
     } = this.props;
 
     return (
-      <Grid container id="formContainer">
-        <Grid item sm />
-        <Grid item sm>
+      <div className="loginSignupBG">
+        <Link to="/">
+          <span className="backHomeBtn">
+            <KeyboardBackspaceIcon className="backArrow" />
+            Home
+          </span>
+        </Link>
+
+        <div className="welcomeTextContainer">
+          <span className="welcomeText-1">Hi</span>
+          <span className="welcomeText-2">Nice to meet you,</span>
+          <span className="welcomeText-3">welcome to Snippy.</span>
+        </div>
+        <img src={symbolBG} id="symbolBG" alt="background" />
+        <div className="loginSignupContainer">
+          <div className="spaceBlock"></div>
           <img src={snipLogo} id="snippyLogo" alt="Snippy Logo" />
-          <form noValidate onSubmit={this.takeSubmit}>
-            <TextField
-              id="email"
-              name="email"
-              type="email"
-              label="Email"
-              helperText={errors.email}
-              error={errors.email ? true : false} //if error in errors.email -> true : 'else' false
-              value={this.state.email}
-              onChange={this.takeChange}
-              fullWidth
-            />
+          <div className="centerLogin">
+            <form noValidate onSubmit={this.takeSubmit}>
+              <TextField
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+                helperText={errors.email}
+                error={errors.email ? true : false} //if error in errors.email -> true : 'else' false
+                value={this.state.email}
+                onChange={this.takeChange}
+                fullWidth
+              />
 
-            <TextField
-              id="password"
-              name="password"
-              type="password"
-              label="Password"
-              helperText={errors.password}
-              error={errors.password ? true : false} //if error in errors.password -> true : 'else' false
-              value={this.state.password}
-              onChange={this.takeChange}
-              fullWidth
-            />
+              <TextField
+                id="password"
+                name="password"
+                type="password"
+                label="Password"
+                helperText={errors.password}
+                error={errors.password ? true : false} //if error in errors.password -> true : 'else' false
+                value={this.state.password}
+                onChange={this.takeChange}
+                fullWidth
+              />
 
-            {errors.general && (
-              <span id="incorrectError">{errors.general}</span>
-            )}
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              id="loginButton"
-              disabled={loading}
-            >
-              Submit
-              {loading && (
-                <CircularProgress
-                  size={30}
-                  id="loadingSpin"
-                  color="secondary"
-                />
+              {errors.general && (
+                <span id="incorrectError">{errors.general}</span>
               )}
-            </Button>
-            <span id="noAccountRedirect">
-              Dont have an account? <Link to="/signup">Sign up</Link>
-            </span>
-          </form>
-        </Grid>
-        <Grid item sm />
-      </Grid>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                id="loginButton"
+                disabled={loading}
+              >
+                Login
+                {loading && <Loadingdots />}
+              </Button>
+              <div className="bringForward">
+                <span id="noAccountRedirect">
+                  Dont have an account? <Link to="/signup">Sign up</Link>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <LoginSVGs />
+      </div>
     );
   }
 }

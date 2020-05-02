@@ -5,11 +5,22 @@
 @import "elements/_snippets.css";
 @import "elements/_userProfileCard.css";
 @import "pagecss/_login&signup.css";
-
+@import "elements/_loadingdots.css";
+@import "svgs/_svgCLS.css";
 /* Anything in the main.css file is to be used globally */
 * {
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.overflowSwitch {
+  overflow: hidden;
 }
 
 h1 {
@@ -40,6 +51,17 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+/*-----------------Backgrounds--------------------*/
+
+body {
+  background-color: #fcfcfc;
+}
+
+.container {
+  margin: 80px auto 0 auto;
+  max-width: 1200px;
 }
 
 h1::selection {
@@ -85,4 +107,17 @@ img::selection {
 li::selection {
   background-color: #c576ed;
   color: white;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ddd;
 }

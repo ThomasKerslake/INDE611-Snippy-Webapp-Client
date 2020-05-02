@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 //Listed as an error in the console.
 const Link = require("react-router-dom").Link;
 
-export class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <AppBar>
