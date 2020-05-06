@@ -46,6 +46,7 @@ export const userSignup = (newUserInfo, history) => (dispatch) => {
     });
 };
 
+//Used to obtain a users info and be called apon in other functions that require this info
 export const getUserInfo = () => (dispatch) => {
   dispatch({ type: LOADING_USER }); //Set to loading
   axios
@@ -77,4 +78,26 @@ const setHeaderForAuthorization = (userToken) => {
   localStorage.setItem("userTokenId", userTokenId);
   //Setting the header value for axios
   axios.defaults.headers.common["Authorization"] = userTokenId;
+};
+
+//Handling user image uploading to be used in userprofile.js
+export const imageUpload = (userFormData) => (dispatch) => {
+  dispatch({ type: LOADING_USER }); //Set to loading
+  axios
+    .post("/user/image", userFormData)
+    .then((res) => {
+      dispatch(getUserInfo()); //Get the users profile data again
+    })
+    .catch((err) => console.log(err));
+};
+
+//Used for when a user wants to change there profile data
+export const updateUserInfo = (userInfo) => (dispatch) => {
+  dispatch({ type: LOADING_USER }); //Set to loading
+  axios
+    .post("/user", userInfo)
+    .then(() => {
+      dispatch(getUserInfo());
+    })
+    .catch((err) => console.log(err));
 };

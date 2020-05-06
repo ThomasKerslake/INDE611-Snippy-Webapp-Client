@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 //Dayjs for user joined since
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+//Redux
+import { connect } from "react-redux";
+import { imageUpload, userLogout } from "../redux/actions/userActions";
 //MUI
 import Button from "@material-ui/core/Button";
+import { Tooltip } from "@material-ui/core";
 //ICONS
 import InsertLinkIcon from "@material-ui/icons/InsertLink";
 import TodayIcon from "@material-ui/icons/Today";
@@ -14,8 +17,23 @@ import CloseIcon from "@material-ui/icons/Close";
 //Images / Other
 import NotaMember from "../images/NotaMember.png";
 import Loadingdots from "../components/Loadingdots.js";
+import EditUserInfoBtn from "../components/EdituserInfo";
 
 class Userprofile extends Component {
+  //Profile image uploading for a user
+  userUploadsImage = (event) => {
+    //Get the first file selected
+    const userImage = event.target.files[0];
+    const userFormData = new FormData();
+    userFormData.append("image", userImage, userImage.name);
+    this.props.imageUpload(userFormData);
+  };
+
+  initiatePictureChange = () => {
+    const userInput = document.getElementById("imageUpload");
+    userInput.click();
+  };
+
   render() {
     //Used for getting relative time since users joined
     dayjs.extend(relativeTime);
@@ -35,10 +53,19 @@ class Userprofile extends Component {
           <div className="userProfileCard">
             <div className="userProfileBackgroundSlide"></div>
             <div className="userProfileImage">
-              <img
-                src={imageUrl}
-                className="userImage"
-                alt="UserProfileImage"
+              <Tooltip title="Change picture" placement="top">
+                <img
+                  src={imageUrl}
+                  className="userImage"
+                  alt="UserProfileImage"
+                  onClick={this.initiatePictureChange}
+                />
+              </Tooltip>
+              <input
+                type="file"
+                id="imageUpload"
+                hidden="hidden"
+                onChange={this.userUploadsImage}
               />
             </div>
             <div className="userProfileName">
@@ -74,6 +101,7 @@ class Userprofile extends Component {
                     </h4>
                   </li>
                 </ul>
+                <EditUserInfoBtn />
               </div>
             </div>
           </div>
@@ -119,6 +147,8 @@ class Userprofile extends Component {
 
 Userprofile.propTypes = {
   user: PropTypes.object.isRequired,
+  userLogout: PropTypes.func.isRequired,
+  imageUpload: PropTypes.func.isRequired,
 };
 
 //Bringing in the user global
@@ -126,4 +156,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Userprofile);
+const mapActionsToProps = { imageUpload, userLogout };
+
+export default connect(mapStateToProps, mapActionsToProps)(Userprofile);

@@ -6,6 +6,7 @@
 @import "elements/_userProfileCard.css";
 @import "pagecss/_login&signup.css";
 @import "elements/_loadingdots.css";
+@import "elements/_edituserInfo.css";
 @import "svgs/_svgCLS.css";
 /* Anything in the main.css file is to be used globally */
 * {
@@ -19,9 +20,22 @@ body {
   padding: 0;
 }
 
+/*---------------Body switches------------*/
 .overflowSwitch {
   overflow: hidden;
 }
+
+.backgroundSymbols {
+  overflow: hidden;
+}
+
+#largeBG {
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -10;
+}
+/*---------------------------------------*/
 
 h1 {
   font-family: "Montserrat", sans-serif;
@@ -111,6 +125,7 @@ li::selection {
 
 ::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
