@@ -3,6 +3,11 @@
   color: black;
 }
 
+.MuiTypography-root {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700 !important;
+}
+
 .editInfoBtn {
   width: 20px;
   height: 20px;
@@ -30,6 +35,6 @@
   padding: 15px;
 }
 
-.dialogContainer {
+.MuiDialog-paper {
   border-radius: 20px !important;
 }

@@ -7,6 +7,7 @@
 @import "pagecss/_login&signup.css";
 @import "elements/_loadingdots.css";
 @import "elements/_edituserInfo.css";
+@import "elements/_navbar.css";
 @import "svgs/_svgCLS.css";
 /* Anything in the main.css file is to be used globally */
 * {

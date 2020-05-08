@@ -8,7 +8,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { connect } from "react-redux";
 import { imageUpload, userLogout } from "../redux/actions/userActions";
 //MUI
-import Button from "@material-ui/core/Button";
 import { Tooltip } from "@material-ui/core";
 //ICONS
 import InsertLinkIcon from "@material-ui/icons/InsertLink";

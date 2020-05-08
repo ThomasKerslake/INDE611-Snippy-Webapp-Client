@@ -3,6 +3,8 @@ import {
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   LOADING_USER,
+  LIKE_SNIPPET,
+  UNLIKE_SNIPPET,
 } from "../types";
 
 const initialState = {
@@ -16,6 +18,11 @@ const initialState = {
 export default function (state = initialState, action) {
   //types taken from type.js
   switch (action.type) {
+    case LOADING_USER:
+      return {
+        ...state,
+        loading: true,
+      };
     case SET_AUTHENTICATED:
       return {
         ...state,
@@ -29,10 +36,25 @@ export default function (state = initialState, action) {
         loading: false,
         ...action.payload, //spread info from payload to initalstate
       };
-    case LOADING_USER:
+    case LIKE_SNIPPET:
       return {
         ...state,
-        loading: true,
+        likes: [
+          //spread likes
+          ...state.likes,
+          {
+            userHandle: state.credentials.userName,
+            snipId: action.payload.snipId,
+          },
+        ],
+      };
+    case UNLIKE_SNIPPET:
+      return {
+        //get likes, filter & match by incoming payload.snipId to get corresponding stored like
+        ...state,
+        likes: state.likes.filter(
+          (userLike) => userLike.snipId !== action.payload.snipId
+        ),
       };
     default:
       return state; //Retuern the state (initalState)

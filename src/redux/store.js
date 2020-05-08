@@ -9,6 +9,7 @@ import dataReducer from "./reducers/dataReducer";
 const initialState = {};
 const middleware = [thunk];
 
+//Holds reducers linked in the imports above
 const reducersState = combineReducers({
   user: userReducer,
   data: dataReducer,

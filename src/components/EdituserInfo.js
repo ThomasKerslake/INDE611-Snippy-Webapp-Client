@@ -79,7 +79,9 @@ class EdituserInfo extends Component {
           maxWidth="sm"
         >
           <div className="dialogWrapper">
-            <DialogTitle>Update your profile details</DialogTitle>
+            <DialogTitle className="dialogTitle">
+              Update your profile details
+            </DialogTitle>
             <DialogContent>
               <form>
                 <TextField
@@ -98,7 +100,7 @@ class EdituserInfo extends Component {
                 <TextField
                   name="website"
                   type="text"
-                  label="Show us your what you make"
+                  label="Show us what you make"
                   placeholder="http://myamazingwebsite.com"
                   className="standardTextInput"
                   value={this.state.website}

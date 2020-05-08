@@ -1,17 +1,441 @@
-#cardContent {
-  padding: 25px;
+.postCard {
+  margin: 60px auto 60px auto;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background: #ffffff;
+  -webkit-filter: drop-shadow(0px 10px 0px rgba(0, 0, 0, 0.02));
+  filter: drop-shadow(0px 10px 0px rgba(0, 0, 0, 0.02));
 }
 
-#cardImage {
-  min-width: 200px;
-  object-fit: cover;
+.postInfoContainer {
+  width: 100%;
+  height: 100%;
 }
 
-#card {
-  display: flex;
-  margin-bottom: 20px;
+.userInteraction {
+  position: absolute;
+  top: -31px;
+  left: 20px;
+  width: auto;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  opacity: 0;
+}
+.postCard:hover > div.userInteraction {
+  opacity: 1;
 }
 
-#snippetCode {
-  font-family: "Source Code Pro", monospace;
+.interactionSelection {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.interactionItemDelete,
+.interactionItemLike,
+.interactionItemComment,
+.interactionItemCopy {
+  float: left;
+  padding: 2px 25px 2px 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.8em !important;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+.deleteIcon,
+.commentIcon,
+.likeIcon,
+.copyIcon {
+  transform: scale(0.8);
+}
+
+.interactionItemDelete {
+  background-color: #f696af;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.interactionItemDelete:hover {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.interactionItemLike {
+  background-color: #b5ddf4;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.interactionItemLike:hover {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.interactionItemComment {
+  background-color: #c576eb;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.interactionItemComment:hover {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.interactionItemCopy {
+  background-color: #f7ce52;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.interactionItemCopy:hover {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.postLikeCount,
+.postCommentCount {
+  margin-right: 5px;
+}
+
+.postDetails {
+  padding-top: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+  width: 60%;
+}
+
+.postOverflowWrap {
+  padding-top: 5px;
+  padding-right: 15px;
+  max-height: 190px;
+  height: auto;
+  overflow: auto;
+}
+
+.postTitle {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+
+.userImage-NameContainer {
+  margin-top: 22px;
+  padding-bottom: 20px;
+}
+
+.postImage {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+}
+
+.userImage {
+  width: 100%;
+  height: 100%;
+}
+
+.postUser {
+  padding-top: 10px;
+}
+
+.postUserName {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+
+.postInteractionCounters {
+  margin-top: -15px;
+  float: right;
+}
+
+.userComments,
+.userLikes {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  color: #464646;
+  margin-right: 20px;
+}
+
+.userLikes {
+  margin-right: 20px;
+}
+
+/* .userComments {
+} */
+
+.postLowerDetials {
+  margin-top: 10px;
+}
+
+.postType-TimeContainer {
+  margin-top: 10px;
+  padding-bottom: 5px;
+}
+
+.postType {
+  margin-right: 10px;
+  border-radius: 30px;
+  background-color: #c576ed;
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
+.postRelativeTime {
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  color: #464646;
+}
+
+.postDescription {
+  margin-top: 10px;
+  font-size: 0.92em;
+  line-height: 1.4;
+}
+
+.dropdown {
+  width: 100%;
+  margin-top: -20px;
+}
+
+.dropDownBtn {
+  float: right;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border-bottom: 0px solid #c576eb;
+  border-top: 0px solid #f7ce52;
+  border-right: 0px solid #f696af;
+  border-left: 0px solid #b5ddf4;
+  position: absolute;
+  top: 90px;
+  right: 100px;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transform-origin: 50% 50%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  cursor: pointer;
+}
+
+.dropDownBtn:hover {
+  background-color: #e4e4e4;
+}
+
+.tempArrow {
+  position: absolute;
+  transform-origin: 6px -6px;
+  top: 8px;
+  right: 52px;
+  transform: scale(1.8);
+  color: #4d4d4d;
+  width: 0px;
+  height: 0px;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
+.tempArrow:hover {
+  color: #000;
+}
+
+input[type="checkbox"]:checked ~ label.dropDownBtn {
+  animation: spin1 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+input[type="checkbox"]:not(:checked) ~ label.dropDownBtn {
+  animation: spin2 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+input[type="checkbox"]:not(:checked) ~ label.dropDownBtn div.tempArrow {
+  transform-origin: 6px -6px;
+}
+
+input[type="checkbox"]:checked ~ label.dropDownBtn div.tempArrow {
+  transform-origin: 0px 0px;
+}
+
+@keyframes spin1 {
+  0% {
+    transform: rotate(0deg);
+    border-bottom: 0px solid #c576eb;
+    border-top: 0px solid #f7ce52;
+    border-right: 0px solid #f696af;
+    border-left: 0px solid #b5ddf4;
+  }
+  100% {
+    transform: rotate(180deg);
+    border-bottom: 5px solid #c576eb;
+    border-top: 5px solid #f7ce52;
+    border-right: 5px solid #f696af;
+    border-left: 5px solid #b5ddf4;
+  }
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(180deg);
+    border-bottom: 5px solid #c576eb;
+    border-top: 5px solid #f7ce52;
+    border-right: 5px solid #f696af;
+    border-left: 5px solid #b5ddf4;
+  }
+  100% {
+    transform: rotate(0deg);
+    border-bottom: 0px solid #c576eb;
+    border-top: 0px solid #f7ce52;
+    border-right: 0px solid #f696af;
+    border-left: 0px solid #b5ddf4;
+  }
+}
+
+input[type="checkbox"].codeDropdown {
+  display: none;
+}
+
+.codeSnippetList {
+  margin-top: 40px;
+  max-height: 0;
+  overflow: hidden;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: #ffffff;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.listSpaceBreak {
+  margin-top: 30px;
+}
+
+.codeSnippetItem {
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  color: #464646;
+  border-radius: 20px;
+  background-color: #fcfcfc;
+}
+
+pre {
+  padding: 30px;
+  font-size: 1em;
+  white-space: pre-wrap;
+}
+
+input[type="checkbox"]:checked ~ ul.codeSnippetList {
+  animation: expandSnippets 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+  overflow: auto;
+}
+
+input[type="checkbox"]:not(:checked) ~ ul.codeSnippetList {
+  animation: shrinkSnippets 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+  overflow: auto;
+}
+
+@keyframes expandSnippets {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 500px;
+  }
+}
+
+@keyframes shrinkSnippets {
+  0% {
+    max-height: 500px;
+  }
+  100% {
+    max-height: 0px;
+  }
+}
+/*-------------------------------------------------------------------------------------*/
+
+/* tablet */
+@media (max-width: 850px) {
+  .postInteractionCounters {
+    margin-top: 15px;
+    float: right;
+  }
+
+  .dropDownBtn {
+    right: 50px;
+  }
+
+  .interactionItemDelete,
+  .interactionItemLike,
+  .interactionItemComment,
+  .interactionItemCopy {
+    padding: 5px 15px 5px 15px;
+  }
+}
+
+/* phablet */
+@media (max-width: 650px) {
+  .userInteraction {
+    left: 18px;
+  }
+
+  .dropDownBtn {
+    right: 20px;
+  }
+
+  .interactionItemDelete:hover {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .interactionItemLike:hover {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .interactionItemComment:hover {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .interactionItemCopy:hover {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+/* mobile */
+@media (max-width: 400px) {
+  .dropDownBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    right: 10px;
+  }
+
+  .tempArrow {
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+  }
 }

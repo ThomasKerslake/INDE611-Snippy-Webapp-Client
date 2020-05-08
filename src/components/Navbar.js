@@ -6,10 +6,14 @@ import { connect } from "react-redux";
 //MUI - Import 1 by 1 (tree shaking) to reduce sizes / speed up loading
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-//Set up like this as support for 'react-router-dom/link' will be removed in next major update
-//Listed as an error in the console.
-const Link = require("react-router-dom").Link;
+import { Link } from "react-router-dom";
+import { Tooltip } from "@material-ui/core";
+//Icons
+import { IconButton } from "@material-ui/core";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+//images
+import snipLogo from "../images/snippyLogoName.png";
 
 class Navbar extends Component {
   logoutThisUser = () => {
@@ -29,26 +33,68 @@ class Navbar extends Component {
       userAuthenticated ? (
         <AppBar>
           <Toolbar className="navbarContainer">
-            <Button color="inherit" component={Link} to="/">
-              Home
-            </Button>
-            <Button color="inherit" onClick={this.logoutThisUser}>
-              Logout
-            </Button>
+            <div className="navLogoContainer">
+              <Link to="/">
+                <Tooltip title="Home" placement="bottom">
+                  <img src={snipLogo} id="navLogo" alt="Snippy Logo" />
+                </Tooltip>
+              </Link>
+            </div>
+            <div className="navActionsContainer">
+              <div className="navButtons">
+                <ul className="navActions">
+                  <li className="notificationBtn">
+                    <Tooltip title="Notifications" placement="bottom">
+                      <IconButton>
+                        <NotificationsIcon color="secondary" />
+                      </IconButton>
+                    </Tooltip>
+                  </li>
+                  <li className="navUserProfile">
+                    <div className="navUserContainer">
+                      <Tooltip
+                        title={`Profile: ${userName}`}
+                        placement="bottom"
+                      >
+                        <img
+                          src={imageUrl}
+                          className="navUserImage"
+                          alt="UserProfileImage"
+                          onClick={this.initiatePictureChange}
+                        />
+                      </Tooltip>
+                    </div>
+                  </li>
+                  <li className="logoutBtn" onClick={this.logoutThisUser}>
+                    <Tooltip title="Logout" placement="bottom">
+                      <ExitToAppIcon color="secondary" />
+                    </Tooltip>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </Toolbar>
         </AppBar>
       ) : (
         <AppBar>
           <Toolbar className="navbarContainer">
-            <Button color="inherit" component={Link} to="/">
-              Home
-            </Button>
-            <Button color="inherit" component={Link} to="/login">
-              Login
-            </Button>
-            <Button color="inherit" component={Link} to="/signup">
-              Signup
-            </Button>
+            <div className="navLogoContainer">
+              <Link to="/">
+                <img src={snipLogo} id="navLogo" alt="Snippy Logo" />
+              </Link>
+            </div>
+            <div className="navActionsContainer">
+              <div className="navButtons">
+                <ul className="navActions">
+                  <li className="login-signup-Btn">
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li className="login-signup-Btn">
+                    <Link to="/signup">Sign up</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </Toolbar>
         </AppBar>
       )

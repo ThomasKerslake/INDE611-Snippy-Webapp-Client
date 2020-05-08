@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-
+import PropTypes from "prop-types";
+//Redux stuff
+import { connect } from "react-redux";
+import { getSnippetsAction } from "../redux/actions/dataActions";
 //Components
 import Snippet from "../components/Snippet.js";
 import Userprofile from "../components/Userprofile.js";
@@ -11,27 +14,16 @@ import Navbar from "../components/Navbar";
 import symbolsBGlarge from "../images/BackgroundSymbols.png";
 
 class home extends Component {
-  //Setting the sates for the snippets
-  state = {
-    snips: null,
-  };
   //Getting the snippets from snippy database with axios, using the proxy set in package.json
   componentDidMount() {
-    axios
-      .get("/snips")
-      .then((res) => {
-        //console.log(res.data);
-        this.setState({
-          snips: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    this.props.getSnippetsAction();
   }
 
   render() {
+    const { snippets, loading } = this.props.data;
     //Checking for snips -> else say loading...
-    let latestSnippets = this.state.snips ? (
-      this.state.snips.map((snip) => <Snippet key={snip.snipId} snip={snip} />)
+    let latestSnippets = !loading ? (
+      snippets.map((snippet) => <Snippet key={snippet.snipId} snip={snippet} />)
     ) : (
       <Loadingdots />
     );
@@ -57,4 +49,14 @@ class home extends Component {
   }
 }
 
-export default home;
+home.propTypes = {
+  getSnippetsAction: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+// data: found in store.js that has dataReducer attached -> to home
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+export default connect(mapStateToProps, { getSnippetsAction })(home);
