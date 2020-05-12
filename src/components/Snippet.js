@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 //Used for formating the times of post to show post times like twitter / fb
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-//MUI stuff
+//Components
+import DeleteUserSnippet from "../components/DeleteUserSnippet";
+import SnippetExpandDetails from "../components/SnippetExpandDetails";
+//Material UI
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import AddCommentIcon from "@material-ui/icons/AddComment";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import { Tooltip } from "@material-ui/core";
@@ -54,7 +56,10 @@ class Snippet extends Component {
         numOfComments,
         snipId,
       },
-      user: { userAuthenticated },
+      user: {
+        userAuthenticated,
+        credentials: { userName },
+      },
     } = this.props;
 
     //Checking if a user is logged in (authenticated) and if the user has liked this snippet
@@ -80,21 +85,18 @@ class Snippet extends Component {
       </Tooltip>
     );
 
+    const userDeleteButton =
+      userAuthenticated && userHandle == userName ? (
+        <DeleteUserSnippet snipId={snipId} />
+      ) : null;
+
     return (
       <div className="postCard">
         <div className="userInteraction">
           <ul className="interactionSelection">
-            <Tooltip title="Delete Snippet" placement="top">
-              <li className="interactionItemDelete">
-                <DeleteIcon className="deleteIcon" />
-              </li>
-            </Tooltip>
+            {userDeleteButton}
             {userLikeButton}
-            <Tooltip title="Comment" placement="top">
-              <li className="interactionItemComment">
-                <AddCommentIcon className="commentIcon" />
-              </li>
-            </Tooltip>
+            <SnippetExpandDetails snipId={snipId} userHandle={userHandle} />
             <Tooltip title="Copy code!" placement="top">
               <li className="interactionItemCopy">
                 <FileCopyIcon className="copyIcon" />

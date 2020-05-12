@@ -7,6 +7,8 @@ export const SET_UNAUTHENTICATED = "SET_UNAUTHENTICATED";
 //Data types
 export const SET_SNIPPETS = "SET_SNIPPETS";
 export const SET_SNIPPET = "SET_SNIPPET";
+export const POST_SNIPPET = "POST_SNIPPET";
+export const DELETE_SNIPPET = "DELETE_SNIPPET";
 export const LIKE_SNIPPET = "LIKE_SNIP";
 export const UNLIKE_SNIPPET = "UNLIKE_SNIP";
 
@@ -14,7 +16,8 @@ export const UNLIKE_SNIPPET = "UNLIKE_SNIP";
 export const SET_ERRORS = "SET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-//Loading
+//Loading types
 export const LOADING_DATA = "LOADING_DATA";
 export const LOADING_UI = "LOADING_UI";
 export const LOADING_USER = "LOADING_USER";
+export const END_UI_LOADING = "END_UI_LOADING";

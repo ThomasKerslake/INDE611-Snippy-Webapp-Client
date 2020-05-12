@@ -3,7 +3,7 @@ import { userLogout } from "../redux/actions/userActions";
 import PropTypes from "prop-types";
 //Redux
 import { connect } from "react-redux";
-//MUI - Import 1 by 1 (tree shaking) to reduce sizes / speed up loading
+//Material UI - Import 1 by 1 (tree shaking) to reduce sizes / speed up loading
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Link } from "react-router-dom";

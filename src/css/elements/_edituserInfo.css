@@ -14,7 +14,7 @@
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
-  background-color: #c0c0c0;
+  background-color: #c06cfc;
   border-radius: 50%;
   padding: 7px 10px 10px 7px;
   transition: 0.2s;
@@ -24,7 +24,6 @@
 
 .editInfoBtn:hover {
   transform: scale(1.2);
-  background-color: #c06cfc;
 }
 
 .textFieldBreak {
@@ -32,7 +31,7 @@
 }
 
 .dialogWrapper {
-  padding: 15px;
+  padding: 15px 15px;
 }
 
 .MuiDialog-paper {

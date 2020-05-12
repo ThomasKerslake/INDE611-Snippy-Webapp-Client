@@ -10,6 +10,7 @@ import Snippet from "../components/Snippet.js";
 import Userprofile from "../components/Userprofile.js";
 import Loadingdots from "../components/Loadingdots.js";
 import Navbar from "../components/Navbar";
+import CreateSnippetPost from "../components/CreateSnippetPost";
 //images
 import symbolsBGlarge from "../images/BackgroundSymbols.png";
 
@@ -40,6 +41,7 @@ class home extends Component {
               </Grid>
               <Grid item sm={2} xs={2}>
                 <Userprofile />
+                <CreateSnippetPost />
               </Grid>
             </Grid>
           </div>

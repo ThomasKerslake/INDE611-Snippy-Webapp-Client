@@ -8,6 +8,8 @@
 @import "elements/_loadingdots.css";
 @import "elements/_edituserInfo.css";
 @import "elements/_navbar.css";
+@import "elements/_postSnippet.css";
+@import "elements/_snippetExpanded.css";
 @import "svgs/_svgCLS.css";
 /* Anything in the main.css file is to be used globally */
 * {
@@ -130,10 +132,10 @@ li::selection {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4d4d4d;
+  background-color: #9c9c9c;
   border-radius: 20px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #ddd;
+  background-color: #f7f7f7;
 }

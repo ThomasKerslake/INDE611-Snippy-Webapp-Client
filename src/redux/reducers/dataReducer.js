@@ -1,5 +1,8 @@
 import {
+  POST_SNIPPET,
   SET_SNIPPETS,
+  SET_SNIPPET,
+  DELETE_SNIPPET,
   LIKE_SNIPPET,
   UNLIKE_SNIPPET,
   LOADING_DATA,
@@ -25,6 +28,28 @@ export default function (state = initialState, action) {
         ...state,
         snippets: action.payload,
         loading: false,
+      };
+    case SET_SNIPPET:
+      return {
+        ...state,
+        snippet: action.payload,
+        loading: false,
+      };
+    case POST_SNIPPET:
+      //Within the snippets array add the new post first (action.payload)
+      //Then spread the rest of the snippets after so the newest posts are always first
+      return {
+        ...state,
+        snippets: [action.payload, ...state.snippets],
+      };
+    case DELETE_SNIPPET:
+      index = state.snippets.findIndex(
+        (userSnippet) => userSnippet.snipId === action.payload
+      );
+      //remove instance of snippet from array with splice
+      state.snippets.splice(index, 1);
+      return {
+        ...state,
       };
     case LIKE_SNIPPET:
       //Getting the snippet we got back from liking and setting to index

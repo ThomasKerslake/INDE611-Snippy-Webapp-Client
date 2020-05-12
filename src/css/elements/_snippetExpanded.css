@@ -1,0 +1,76 @@
+.loadingDialogContainer {
+  padding: 50px;
+}
+
+.postCardExpanded {
+  margin: 0px auto 30px auto;
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+  border-bottom: 2px solid #c576eb;
+}
+.postDetailsExpanded {
+  padding-top: 0px;
+  margin-right: 40px;
+  margin-left: 5px;
+  width: 75%;
+}
+
+.dropDownBtnDialog {
+  float: right;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border-bottom: 0px solid #c576eb;
+  border-top: 0px solid #f7ce52;
+  border-right: 0px solid #f696af;
+  border-left: 0px solid #b5ddf4;
+  position: absolute;
+  top: 90px;
+  right: 55px;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transform-origin: 50% 50%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  cursor: pointer;
+}
+
+.dropDownBtnDialog:hover {
+  background-color: #e4e4e4;
+}
+
+input[type="checkbox"]:checked ~ label.dropDownBtnDialog {
+  animation: spin1 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+input[type="checkbox"]:not(:checked) ~ label.dropDownBtnDialog {
+  animation: spin2 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+input[type="checkbox"]:not(:checked) ~ label.dropDownBtnDialog div.tempArrow {
+  transform-origin: 6px -6px;
+}
+
+input[type="checkbox"]:checked ~ label.dropDownBtnDialog div.tempArrow {
+  transform-origin: 0px 0px;
+}
+
+.dialogCodeSnippetItem {
+  margin-bottom: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #464646;
+  border-radius: 20px;
+  background-color: #fcfcfc;
+}
+
+/* pre {
+  padding: 30px;
+  font-size: 1em;
+  white-space: pre-wrap;
+} */

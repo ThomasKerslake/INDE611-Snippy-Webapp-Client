@@ -9,7 +9,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import AddIcon from "@material-ui/icons/Add";
+import PostAddIcon from "@material-ui/icons/PostAdd";
 import { Tooltip } from "@material-ui/core";
 //Redux
 import { connect } from "react-redux";
@@ -21,7 +21,7 @@ class EdituserInfo extends Component {
     bio: "",
   };
 
-  mapUserDetailsToState = (credentials) => {
+  mapUserInfo = (credentials) => {
     this.setState({
       bio: credentials.bio ? credentials.bio : "",
       website: credentials.website ? credentials.website : "",
@@ -31,14 +31,14 @@ class EdituserInfo extends Component {
   componentDidMount() {
     //creds to props
     const { credentials } = this.props;
-    this.mapUserDetailsToState(credentials);
+    this.mapUserInfo(credentials);
   }
 
   openDialog = () => {
     this.setState({
       dialogOpen: true,
     });
-    this.mapUserDetailsToState(this.props.credentials);
+    this.mapUserInfo(this.props.credentials);
   };
 
   closeDialog = () => {
@@ -68,7 +68,7 @@ class EdituserInfo extends Component {
       <>
         <div className="editInfoBtn" onClick={this.openDialog}>
           <Tooltip title="Update your details">
-            <AddIcon />
+            <PostAddIcon />
           </Tooltip>
         </div>
 

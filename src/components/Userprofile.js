@@ -7,7 +7,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 //Redux
 import { connect } from "react-redux";
 import { imageUpload, userLogout } from "../redux/actions/userActions";
-//MUI
+//Material UI
 import { Tooltip } from "@material-ui/core";
 //ICONS
 import InsertLinkIcon from "@material-ui/icons/InsertLink";

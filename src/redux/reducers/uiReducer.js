@@ -1,4 +1,4 @@
-import { CLEAR_ERRORS, SET_ERRORS, LOADING_UI } from "../types";
+import { CLEAR_ERRORS, SET_ERRORS, LOADING_UI, END_UI_LOADING } from "../types";
 
 //User interface inital state
 const initialState = {
@@ -19,6 +19,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true,
+      };
+    case END_UI_LOADING:
+      return {
+        ...state,
+        loading: false,
       };
     case CLEAR_ERRORS:
       return {

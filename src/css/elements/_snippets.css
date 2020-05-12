@@ -103,6 +103,21 @@
   margin-right: 5px;
 }
 
+#deleteDialogBtn {
+  color: #f696af;
+}
+
+#deleteDialogBtn:hover {
+  background-color: #f696af !important;
+  color: #ffffff;
+}
+
+.deleteDialogText {
+  margin-top: -10px;
+  font-size: 0.8em;
+  color: #4d4d4d;
+}
+
 .postDetails {
   padding-top: 30px;
   margin-right: 40px;
@@ -152,7 +167,7 @@
 }
 
 .postInteractionCounters {
-  margin-top: -15px;
+  margin-top: -20px;
   float: right;
 }
 
@@ -162,10 +177,6 @@
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
   color: #464646;
-  margin-right: 20px;
-}
-
-.userLikes {
   margin-right: 20px;
 }
 
@@ -374,7 +385,7 @@ input[type="checkbox"]:not(:checked) ~ ul.codeSnippetList {
 /* tablet */
 @media (max-width: 850px) {
   .postInteractionCounters {
-    margin-top: 15px;
+    margin-top: -20px;
     float: right;
   }
 
@@ -386,7 +397,7 @@ input[type="checkbox"]:not(:checked) ~ ul.codeSnippetList {
   .interactionItemLike,
   .interactionItemComment,
   .interactionItemCopy {
-    padding: 5px 15px 5px 15px;
+    padding: 2px 15px 2px 15px;
   }
 }
 
@@ -418,6 +429,13 @@ input[type="checkbox"]:not(:checked) ~ ul.codeSnippetList {
   .interactionItemCopy:hover {
     padding-left: 22px;
     padding-right: 22px;
+  }
+  .postInteractionCounters {
+    margin-right: -20px;
+  }
+  .userComments,
+  .userLikes {
+    margin-right: 10px;
   }
 }
 
