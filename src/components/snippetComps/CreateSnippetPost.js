@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import {
   postSnippetAction,
   emptyErrorsFromState,
-} from "../redux/actions/dataActions";
+} from "../../redux/actions/dataActions";
 //Components
-import Loadingdots from "../components/Loadingdots.js";
+import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
 //Material UI
 import AddIcon from "@material-ui/icons/Add";
 import { Tooltip } from "@material-ui/core";

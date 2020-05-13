@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { userLogout } from "../redux/actions/userActions";
+import { userLogout } from "../../redux/actions/userActions";
 import PropTypes from "prop-types";
 //Redux
 import { connect } from "react-redux";
@@ -13,7 +13,7 @@ import { IconButton } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 //images
-import snipLogo from "../images/snippyLogoName.png";
+import snipLogo from "../../images/snippyLogoName.png";
 
 class Navbar extends Component {
   logoutThisUser = () => {

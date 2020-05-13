@@ -6,9 +6,10 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 //Redux
 import { connect } from "react-redux";
-import { getSingleSnippetAction } from "../redux/actions/dataActions";
+import { getSingleSnippetAction } from "../../redux/actions/dataActions";
 //Components
-import Loadingdots from "../components/Loadingdots.js";
+import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
+import CommentSnippetPost from "../snippetComps/CommentSnippetPost";
 //Material UI
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -16,13 +17,10 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import AddCommentIcon from "@material-ui/icons/AddComment";
 import { Tooltip } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import { SET_SNIPPETS } from "../redux/types";
 
 class SnippetExpandDetails extends Component {
   state = {
@@ -52,6 +50,7 @@ class SnippetExpandDetails extends Component {
         userProfileImage,
         numOfLikes,
         numOfComments,
+        comments,
         snipId,
       },
       UI: { loading },
@@ -124,6 +123,7 @@ class SnippetExpandDetails extends Component {
           </div>
         </div>
         <hr />
+        <CommentSnippetPost comments={comments} />
       </>
     );
 

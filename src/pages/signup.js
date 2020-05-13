@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 //Components
-import Loadingdots from "../components/Loadingdots.js";
+import Loadingdots from "../components/layout-Util-Comps/Loadingdots.js";
 import LoginSVGs from "../components/pagesvgs/LoginSVGs.js";
 //react/redux
 import { connect } from "react-redux";

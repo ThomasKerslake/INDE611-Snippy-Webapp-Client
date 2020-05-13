@@ -10,6 +10,7 @@
 @import "elements/_navbar.css";
 @import "elements/_postSnippet.css";
 @import "elements/_snippetExpanded.css";
+@import "elements/_snippetComments.css";
 @import "svgs/_svgCLS.css";
 /* Anything in the main.css file is to be used globally */
 * {

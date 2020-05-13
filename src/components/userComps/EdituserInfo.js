@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 //Useractions
-import { updateUserInfo } from "../redux/actions/userActions";
+import { updateUserInfo } from "../../redux/actions/userActions";
 //icons & MUI
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";

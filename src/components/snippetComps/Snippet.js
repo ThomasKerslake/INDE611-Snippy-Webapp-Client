@@ -5,42 +5,19 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 //Components
-import DeleteUserSnippet from "../components/DeleteUserSnippet";
-import SnippetExpandDetails from "../components/SnippetExpandDetails";
+import DeleteUserSnippet from "../../components/snippetComps/DeleteUserSnippet";
+import SnippetExpandDetails from "../../components/snippetComps/SnippetExpandDetails";
+import LikeSnippetPost from "../../components/snippetComps/LikeSnippetPost";
 //Material UI
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import DeleteIcon from "@material-ui/icons/Delete";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import { Tooltip } from "@material-ui/core";
 //Redux
 import { connect } from "react-redux";
-import {
-  unlikeSnippetAction,
-  likeSnippetAction,
-} from "../redux/actions/dataActions";
 
 class Snippet extends Component {
-  userLikedSnippet = () => {
-    //First checking to see if a user has likes and if there is a like with a matching snipid
-    if (
-      this.props.user.likes &&
-      this.props.user.likes.find(
-        (userLike) => userLike.snipId === this.props.snip.snipId
-      )
-    )
-      return true;
-    else return false;
-  };
-
-  likeSnippet = () => {
-    this.props.likeSnippetAction(this.props.snip.snipId);
-  };
-  unlikeSnippet = () => {
-    this.props.unlikeSnippetAction(this.props.snip.snipId);
-  };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -62,29 +39,6 @@ class Snippet extends Component {
       },
     } = this.props;
 
-    //Checking if a user is logged in (authenticated) and if the user has liked this snippet
-    const userLikeButton = !userAuthenticated ? (
-      <Tooltip title="Like" placement="top">
-        <Link to="/login">
-          <li className="interactionItemLike">
-            <FavoriteBorderIcon className="likeIcon" />
-          </li>
-        </Link>
-      </Tooltip>
-    ) : this.userLikedSnippet() ? (
-      <Tooltip title="un-like" placement="top">
-        <li className="interactionItemLike" onClick={this.unlikeSnippet}>
-          <FavoriteIcon className="likeIcon" />
-        </li>
-      </Tooltip>
-    ) : (
-      <Tooltip title="like" placement="top">
-        <li className="interactionItemLike" onClick={this.likeSnippet}>
-          <FavoriteBorderIcon className="likeIcon" />
-        </li>
-      </Tooltip>
-    );
-
     const userDeleteButton =
       userAuthenticated && userHandle == userName ? (
         <DeleteUserSnippet snipId={snipId} />
@@ -95,7 +49,7 @@ class Snippet extends Component {
         <div className="userInteraction">
           <ul className="interactionSelection">
             {userDeleteButton}
-            {userLikeButton}
+            <LikeSnippetPost snipId={snipId} />
             <SnippetExpandDetails snipId={snipId} userHandle={userHandle} />
             <Tooltip title="Copy code!" placement="top">
               <li className="interactionItemCopy">
@@ -162,17 +116,12 @@ class Snippet extends Component {
 }
 
 Snippet.propTypes = {
-  unlikeSnippetAction: PropTypes.func.isRequired,
-  likeSnippetAction: PropTypes.func.isRequired,
   snip: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapActionsToProps = {
-  unlikeSnippetAction,
-  likeSnippetAction,
-};
-export default connect(mapStateToProps, mapActionsToProps)(Snippet);
+export default connect(mapStateToProps)(Snippet);

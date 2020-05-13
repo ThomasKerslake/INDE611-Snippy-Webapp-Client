@@ -448,12 +448,4 @@ input[type="checkbox"]:not(:checked) ~ ul.codeSnippetList {
 
     right: 10px;
   }
-
-  .tempArrow {
-    margin-top: 5px;
-    margin-left: 5px;
-    width: 10px;
-    height: 10px;
-    background-color: blue;
-  }
 }

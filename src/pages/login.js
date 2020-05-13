@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import snipLogo from "../images/snippyLogoName.png";
 import symbolBG from "../images/SmallBG.png";
 //Components
-import Loadingdots from "../components/Loadingdots.js";
+import Loadingdots from "../components/layout-Util-Comps/Loadingdots.js";
 import LoginSVGs from "../components/pagesvgs/LoginSVGs.js";
 //React-Redux
 import { connect } from "react-redux";

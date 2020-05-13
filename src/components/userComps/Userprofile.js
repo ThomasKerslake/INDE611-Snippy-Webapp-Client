@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 //Redux
 import { connect } from "react-redux";
-import { imageUpload, userLogout } from "../redux/actions/userActions";
+import { imageUpload, userLogout } from "../../redux/actions/userActions";
 //Material UI
 import { Tooltip } from "@material-ui/core";
 //ICONS
@@ -14,9 +14,9 @@ import InsertLinkIcon from "@material-ui/icons/InsertLink";
 import TodayIcon from "@material-ui/icons/Today";
 import CloseIcon from "@material-ui/icons/Close";
 //Images / Other
-import NotaMember from "../images/NotaMember.png";
-import Loadingdots from "../components/Loadingdots.js";
-import EditUserInfoBtn from "../components/EdituserInfo";
+import NotaMember from "../../images/NotaMember.png";
+import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
+import EditUserInfoBtn from "../../components/userComps/EdituserInfo";
 
 class Userprofile extends Component {
   //Profile image uploading for a user

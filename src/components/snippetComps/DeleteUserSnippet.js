@@ -10,7 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import { Tooltip } from "@material-ui/core";
 //redux
 import { connect } from "react-redux";
-import { deleteSnippetAction } from "../redux/actions/dataActions";
+import { deleteSnippetAction } from "../../redux/actions/dataActions";
 
 class DeleteUserSnippet extends Component {
   state = {

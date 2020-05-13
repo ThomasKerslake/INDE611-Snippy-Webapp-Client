@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 //Redux stuff
 import { connect } from "react-redux";
 import { getSnippetsAction } from "../redux/actions/dataActions";
 //Components
-import Snippet from "../components/Snippet.js";
-import Userprofile from "../components/Userprofile.js";
-import Loadingdots from "../components/Loadingdots.js";
-import Navbar from "../components/Navbar";
-import CreateSnippetPost from "../components/CreateSnippetPost";
+import Snippet from "../components/snippetComps/Snippet.js";
+import Userprofile from "../components/userComps/Userprofile.js";
+import Loadingdots from "../components/layout-Util-Comps/Loadingdots.js";
+import Navbar from "../components/layout-Util-Comps/Navbar";
+import CreateSnippetPost from "../components/snippetComps/CreateSnippetPost";
 //images
 import symbolsBGlarge from "../images/BackgroundSymbols.png";
 

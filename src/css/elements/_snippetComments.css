@@ -1,0 +1,25 @@
+.commentCard {
+  margin: 20px auto 20px auto;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.commentInfoContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.commentImage {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.commentUserImage {
+  width: 100%;
+  height: 100%;
+}
