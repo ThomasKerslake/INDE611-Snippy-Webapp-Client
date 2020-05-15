@@ -6,7 +6,7 @@ import uiReducer from "./reducers/uiReducer";
 import dataReducer from "./reducers/dataReducer";
 
 //Setting up my redux store for global app state managment
-const initialState = {};
+const startingState = {};
 const middleware = [thunk];
 
 //Holds reducers linked in the imports above
@@ -18,7 +18,7 @@ const reducersState = combineReducers({
 
 const store = createStore(
   reducersState,
-  initialState,
+  startingState,
   compose(
     applyMiddleware(...middleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

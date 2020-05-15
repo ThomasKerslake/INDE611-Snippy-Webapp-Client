@@ -9,7 +9,7 @@ li a {
 
 .userProfileCard {
   margin: 0 auto 0 auto;
-  width: 300px;
+  width: 100%;
   height: auto;
   border-radius: 20px;
   background: #ffffff;
@@ -37,7 +37,7 @@ li a {
 
 .userProfileBackgroundSlide {
   margin: 0 auto 0 auto;
-  width: 300px;
+  width: 100%;
   height: 130px;
   background: #c06cfc;
   animation: bgSlide 1.5s ease;

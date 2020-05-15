@@ -73,16 +73,18 @@ class Snippet extends Component {
               </div>
             </div>
             <div className="userImage-NameContainer">
-              <div className="postImage">
-                <img
-                  src={userProfileImage}
-                  className="userImage"
-                  alt="UserProfileImage"
-                />
-              </div>
-              <div className="postUser">
-                <h4 className="postUserName">{userHandle}</h4>
-              </div>
+              <Link to={`/users/${userHandle}`}>
+                <div className="postImage">
+                  <img
+                    src={userProfileImage}
+                    className="userImage"
+                    alt="UserProfileImage"
+                  />
+                </div>
+                <div className="postUser">
+                  <h4 className="postUserName">{userHandle}</h4>
+                </div>
+              </Link>
               <div className="postInteractionCounters">
                 <span className="userLikes">
                   <FavoriteBorderIcon className="postLikeCount" />

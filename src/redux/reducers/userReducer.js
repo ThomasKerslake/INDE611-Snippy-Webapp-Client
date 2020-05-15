@@ -7,7 +7,7 @@ import {
   UNLIKE_SNIPPET,
 } from "../types";
 
-const initialState = {
+const startingState = {
   userAuthenticated: false,
   credentials: {},
   likes: [],
@@ -15,7 +15,7 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action) {
+export default function (state = startingState, action) {
   //types taken from type.js
   switch (action.type) {
     case LOADING_USER:
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
         userAuthenticated: true,
       };
     case SET_UNAUTHENTICATED:
-      return initialState;
+      return startingState;
     case SET_USER:
       return {
         userAuthenticated: true,

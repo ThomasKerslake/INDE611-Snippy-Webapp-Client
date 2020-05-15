@@ -1,5 +1,6 @@
 import {
   POST_SNIPPET,
+  POST_SNIPPET_COMMENT,
   SET_SNIPPETS,
   SET_SNIPPET,
   DELETE_SNIPPET,
@@ -8,13 +9,13 @@ import {
   LOADING_DATA,
 } from "../types";
 
-const initialState = {
+const startingState = {
   snippets: [],
   snippet: {},
   loading: false,
 };
 
-export default function (state = initialState, action) {
+export default function (state = startingState, action) {
   //types taken from type.js
   let index;
   switch (action.type) {
@@ -33,7 +34,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         snippet: action.payload,
-        loading: false,
       };
     case POST_SNIPPET:
       //Within the snippets array add the new post first (action.payload)
@@ -41,6 +41,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         snippets: [action.payload, ...state.snippets],
+      };
+
+    case POST_SNIPPET_COMMENT:
+      return {
+        ...state,
+        //when a user opens a snippet dialog window (comment window) spread the snippet
+        //in the comments array pertaining to snippet -> add new comment (action.payload)
+        // -> spread rest of original comments within the array after new comment
+        snippet: {
+          ...state.snippet,
+          comments: [action.payload, ...state.snippet.comments],
+        },
       };
     case DELETE_SNIPPET:
       index = state.snippets.findIndex(

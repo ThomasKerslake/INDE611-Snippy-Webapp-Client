@@ -1,13 +1,13 @@
 import { CLEAR_ERRORS, SET_ERRORS, LOADING_UI, END_UI_LOADING } from "../types";
 
 //User interface inital state
-const initialState = {
+const startingState = {
   loading: false,
   errors: null,
 };
 
 //Used to check and show errors / loading across the application
-export default function (state = initialState, action) {
+export default function (state = startingState, action) {
   switch (action.type) {
     case SET_ERRORS:
       return {

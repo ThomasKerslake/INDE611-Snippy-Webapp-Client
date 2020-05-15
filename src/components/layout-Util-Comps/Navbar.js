@@ -51,19 +51,21 @@ class Navbar extends Component {
                     </Tooltip>
                   </li>
                   <li className="navUserProfile">
-                    <div className="navUserContainer">
-                      <Tooltip
-                        title={`Profile: ${userName}`}
-                        placement="bottom"
-                      >
-                        <img
-                          src={imageUrl}
-                          className="navUserImage"
-                          alt="UserProfileImage"
-                          onClick={this.initiatePictureChange}
-                        />
-                      </Tooltip>
-                    </div>
+                    <Link to={`/users/${userName}`}>
+                      <div className="navUserContainer">
+                        <Tooltip
+                          title={`Profile: ${userName}`}
+                          placement="bottom"
+                        >
+                          <img
+                            src={imageUrl}
+                            className="navUserImage"
+                            alt="UserProfileImage"
+                            onClick={this.initiatePictureChange}
+                          />
+                        </Tooltip>
+                      </div>
+                    </Link>
                   </li>
                   <li className="logoutBtn" onClick={this.logoutThisUser}>
                     <Tooltip title="Logout" placement="bottom">

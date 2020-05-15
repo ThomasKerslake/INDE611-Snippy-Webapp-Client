@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getSnippetsAction } from "../redux/actions/dataActions";
 //Components
 import Snippet from "../components/snippetComps/Snippet.js";
-import Userprofile from "../components/userComps/Userprofile.js";
+import HintToLogin from "../components/layout-Util-Comps/HintToLogin.js";
 import Loadingdots from "../components/layout-Util-Comps/Loadingdots.js";
 import Navbar from "../components/layout-Util-Comps/Navbar";
 import CreateSnippetPost from "../components/snippetComps/CreateSnippetPost";
@@ -39,7 +39,7 @@ class home extends Component {
                 {latestSnippets}
               </Grid>
               <Grid item sm={2} xs={2}>
-                <Userprofile />
+                <HintToLogin />
                 <CreateSnippetPost />
               </Grid>
             </Grid>

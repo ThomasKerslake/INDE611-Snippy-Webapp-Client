@@ -6,20 +6,22 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 //Redux
 import { connect } from "react-redux";
-import { getSingleSnippetAction } from "../../redux/actions/dataActions";
+import {
+  getSingleSnippetAction,
+  emptyErrorsFromState,
+} from "../../redux/actions/dataActions";
 //Components
 import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
 import CommentSnippetPost from "../snippetComps/CommentSnippetPost";
+import CreateCommentPost from "../snippetComps/CreateCommentPost";
 //Material UI
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import AddCommentIcon from "@material-ui/icons/AddComment";
 import { Tooltip } from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
+
 import DialogContent from "@material-ui/core/DialogContent";
 
 class SnippetExpandDetails extends Component {
@@ -34,11 +36,13 @@ class SnippetExpandDetails extends Component {
   //Close dialog and clear errors
   closePostsDialog = () => {
     this.setState({ dialogOpen: false });
+    this.props.emptyErrorsFromState();
   };
 
   //This component share styles from _snippetExpanded.css and snippet.css
   //(any class with Expanded or dialog added front or back is found in _snippetExpanded.css)
   render() {
+    dayjs.extend(relativeTime);
     const {
       snip: {
         createdAt,
@@ -122,7 +126,8 @@ class SnippetExpandDetails extends Component {
             </ul>
           </div>
         </div>
-        <hr />
+        <CreateCommentPost snipId={snipId} />
+        <hr id="commentBreaker" />
         <CommentSnippetPost comments={comments} />
       </>
     );
@@ -152,6 +157,7 @@ class SnippetExpandDetails extends Component {
 
 SnippetExpandDetails.propTypes = {
   getSingleSnippetAction: PropTypes.func.isRequired,
+  emptyErrorsFromState: PropTypes.func.isRequired,
   userHandle: PropTypes.string.isRequired,
   snipId: PropTypes.string.isRequired,
   snip: PropTypes.object.isRequired,
@@ -165,6 +171,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   getSingleSnippetAction,
+  emptyErrorsFromState,
 };
 
 export default connect(

@@ -8,11 +8,13 @@ import {
   LOADING_UI,
   END_UI_LOADING,
   POST_SNIPPET,
+  POST_SNIPPET_COMMENT,
   SET_ERRORS,
   CLEAR_ERRORS,
 } from "../types";
 import axios from "axios";
 
+// Major actions
 //Used for removing error messages out of the state so they dont popup unnecessarily
 export const emptyErrorsFromState = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
@@ -62,6 +64,19 @@ export const getSnippetsAction = () => (dispatch) => {
     });
 };
 
+export const getUserPageDataAction = (userPageName) => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`/user/${userPageName}`)
+    .then((res) => {
+      dispatch({ type: SET_SNIPPETS, payload: res.data.snips });
+    })
+    .catch((err) => {
+      dispatch({ type: SET_SNIPPETS, payload: null });
+    });
+};
+
+// Minor actions
 //Deleting a users snippet
 export const deleteSnippetAction = (snipId) => (dispatch) => {
   axios
@@ -80,6 +95,22 @@ export const likeSnippetAction = (snipId) => (dispatch) => {
       dispatch({ type: LIKE_SNIPPET, payload: res.data });
     })
     .catch((err) => console.log(err));
+};
+
+//User posting a new comment on a snippet post
+export const commentSnippetAction = (snipId, contentsOfComment) => (
+  dispatch
+) => {
+  axios
+    .post(`/snip/${snipId}/comment`, contentsOfComment)
+    .then((res) => {
+      dispatch({
+        type: POST_SNIPPET_COMMENT,
+        payload: res.data,
+      });
+      dispatch({ type: CLEAR_ERRORS });
+    }) //As set up prior, if user causes an error posting, error must be shown via UI
+    .catch((err) => dispatch({ type: SET_ERRORS, payload: err.response.data }));
 };
 
 // User unliking users snippet post

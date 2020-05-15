@@ -1,50 +1,28 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-//Dayjs for user joined since
+import { connect } from "react-redux";
+import Userprofile from "./Userprofile.js";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-//Redux
-import { connect } from "react-redux";
-import { imageUpload, userLogout } from "../../redux/actions/userActions";
-//Material UI
 import { Tooltip } from "@material-ui/core";
 //ICONS
 import InsertLinkIcon from "@material-ui/icons/InsertLink";
 import TodayIcon from "@material-ui/icons/Today";
-//Images / Other
-import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
-import EditUserInfoBtn from "../../components/userComps/EdituserInfo";
 
-class Userprofile extends Component {
-  //Profile image uploading for a user
-  userUploadsImage = (event) => {
-    //Get the first file selected
-    const userImage = event.target.files[0];
-    const userFormData = new FormData();
-    userFormData.append("image", userImage, userImage.name);
-    this.props.imageUpload(userFormData);
-  };
-
-  initiatePictureChange = () => {
-    const userInput = document.getElementById("imageUpload");
-    userInput.click();
-  };
-
+class DynamicUserPageSwitch extends Component {
   render() {
-    //Used for getting relative time since users joined
     dayjs.extend(relativeTime);
     const {
-      user: {
-        credentials: { userName, imageUrl, createdAt, website, bio },
-        loading,
-        userAuthenticated,
-      },
+      userPageProfile: { userName, createdAt, imageUrl, bio, website },
     } = this.props;
-    //If the page is not loading check if authenticated : else show loading animation ->
-    // If authenticated ->
-    let userProfileCard = !loading ? (
-      userAuthenticated ? (
+
+    let loggedInUser = this.props.user.credentials.userName;
+
+    const userStaticOrDynamicProfile =
+      loggedInUser === userName ? (
+        <Userprofile />
+      ) : (
         <div className="userProfileContainer">
           <div className="userProfileCard">
             <div className="userProfileBackgroundSlide"></div>
@@ -54,15 +32,8 @@ class Userprofile extends Component {
                   src={imageUrl}
                   className="userImage"
                   alt="UserProfileImage"
-                  onClick={this.initiatePictureChange}
                 />
               </Tooltip>
-              <input
-                type="file"
-                id="imageUpload"
-                hidden="hidden"
-                onChange={this.userUploadsImage}
-              />
             </div>
             <div className="userProfileName">
               <Link to={`/users/${userName}`} className="userName">
@@ -93,24 +64,19 @@ class Userprofile extends Component {
                     </h4>
                   </li>
                 </ul>
-                <EditUserInfoBtn />
               </div>
             </div>
           </div>
         </div>
-      ) : null
-    ) : (
-      <Loadingdots />
-    );
+      );
 
-    return userProfileCard;
+    return userStaticOrDynamicProfile;
   }
 }
 
-Userprofile.propTypes = {
+DynamicUserPageSwitch.propTypes = {
+  userPageProfile: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  userLogout: PropTypes.func.isRequired,
-  imageUpload: PropTypes.func.isRequired,
 };
 
 //Bringing in the user global
@@ -118,6 +84,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapActionsToProps = { imageUpload, userLogout };
-
-export default connect(mapStateToProps, mapActionsToProps)(Userprofile);
+export default connect(mapStateToProps)(DynamicUserPageSwitch);

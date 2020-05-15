@@ -13,11 +13,12 @@ import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { userLogout, getUserInfo } from "./redux/actions/userActions";
 
-//Components
+//Util
 import AuthRoute from "./util/AuthRoute";
 
 //My pages
 import home from "./pages/home";
+import userpage from "./pages/userpage";
 import login from "./pages/login";
 import signup from "./pages/signup";
 
@@ -62,6 +63,7 @@ class App extends Component {
               <Route exact path="/" component={home} />
               <AuthRoute exact path="/login" component={login} />
               <AuthRoute exact path="/signup" component={signup} />
+              <Route exact path="/users/:userName" component={userpage} />
             </Switch>
           </BRouter>
         </Provider>
