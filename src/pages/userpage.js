@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Link } from "react-router-dom";
+//images
+import noSnippets from "../images/noSnippets.png";
 //Redux stuff
 import { connect } from "react-redux";
 import { getUserPageDataAction } from "../redux/actions/dataActions";
@@ -12,36 +15,73 @@ import Navbar from "../components/layout-Util-Comps/Navbar";
 import DynamicUserPageSwitch from "../components/userComps/DynamicUserPageSwitch";
 //images
 import symbolsBGlarge from "../images/BackgroundSymbols.png";
+//icons
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 
 class userpage extends Component {
   state = {
-    userPageProfile: null,
+    snippetParamId: null,
   };
-
   componentDidMount() {
+    const snipId = this.props.match.params.snipId;
+
+    if (snipId) {
+      this.setState({ snippetParamId: snipId });
+    }
     //app route for user page is /user/:userName, here we get that user name
     const userPageName = this.props.match.params.userName;
     this.props.getUserPageDataAction(userPageName);
-    axios
-      .get(`/user/${userPageName}`)
-      .then((res) => {
-        this.setState({
-          userPageProfile: res.data.user,
-        });
-      })
-      .catch((err) => console.log(err));
   }
+
+  //Checking for any possible outcome for data to come back as empty
+  checkEmpty = (data) => {
+    if (
+      data === null ||
+      data === undefined ||
+      JSON.stringify(data) === "{}" ||
+      (typeof data === "object" && Object.keys(data).length === 0)
+    )
+      return true;
+    else return false;
+  };
+
   render() {
     const { snippets, loading } = this.props.data;
-
+    const { snippetParamId } = this.state;
+    //Checking for loading to be true -> if no snippets in array -> show message : else show snippets
     const userSnippets = loading ? (
       <Loadingdots />
-    ) : snippets === null ? (
-      <h1>Sorry, this user seems to not have any Snippet posts.</h1>
-    ) : (
+    ) : this.checkEmpty(snippets) ? (
+      <>
+        <h1 id="noSnippetsText">
+          Sorry, this user seems to not have any Snippet posts.
+        </h1>
+        <div className="noSnippetImageContainer">
+          <div id="noSnippetsImage">
+            <img src={noSnippets} alt="no snippets image" id="imageScale" />
+          </div>
+        </div>
+      </>
+    ) : !snippetParamId ? (
       snippets.map((userPageSnippets) => (
         <Snippet key={userPageSnippets.snipId} snip={userPageSnippets} />
       ))
+    ) : (
+      snippets.map((userPageSnippets) => {
+        if (userPageSnippets.snipId !== snippetParamId) {
+          return (
+            <Snippet key={userPageSnippets.snipId} snip={userPageSnippets} />
+          );
+        } else {
+          return (
+            <Snippet
+              key={userPageSnippets.snipId}
+              snip={userPageSnippets}
+              openSnippetDialog
+            />
+          );
+        }
+      })
     );
     return (
       <>
@@ -52,16 +92,22 @@ class userpage extends Component {
             <Grid container spacing={10}>
               <Grid item sm={2} xs={2} />
               <Grid item sm={8} xs={8}>
-                {this.state.userPageProfile === null ? (
+                <div className="backBtnContainer">
+                  <Link to="/">
+                    <span className="userBackHomeBtn">
+                      <KeyboardBackspaceIcon className="userBackArrow" />
+                      Home
+                    </span>
+                  </Link>
+                </div>
+                {this.checkEmpty(this.props.data) ? (
                   <Loadingdots />
                 ) : (
-                  <DynamicUserPageSwitch
-                    userPageProfile={this.state.userPageProfile}
-                  />
+                  <DynamicUserPageSwitch />
                 )}
                 {userSnippets}
               </Grid>
-              <Grid item sm={2} xs={2}></Grid>
+              <Grid item sm={2} xs={2} />
             </Grid>
           </div>
         </div>

@@ -7,11 +7,13 @@ import {
   LIKE_SNIPPET,
   UNLIKE_SNIPPET,
   LOADING_DATA,
+  SET_USERPAGE,
 } from "../types";
 
 const startingState = {
   snippets: [],
   snippet: {},
+  userpage: [],
   loading: false,
 };
 
@@ -80,7 +82,14 @@ export default function (state = startingState, action) {
       return {
         ...state,
       };
+
+    case SET_USERPAGE:
+      return {
+        ...state,
+        userpage: action.payload,
+        loading: false,
+      };
     default:
-      return state; //Retuern the state (initalState)
+      return state;
   }
 }

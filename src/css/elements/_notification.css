@@ -1,0 +1,44 @@
+.notificationText {
+  font-weight: 500;
+  font-size: 0.8em;
+  color: #4d4d4d;
+}
+
+.notificationSender {
+  font-weight: 700;
+  color: black;
+}
+
+.dotIconComment {
+  color: #c576eb;
+  margin-right: 10px;
+}
+
+.dotIconLike {
+  color: #b5ddf4;
+  margin-right: 10px;
+}
+
+.dotIconLike,
+.dotIconComment {
+  transform: scale(0.8);
+}
+
+.MuiPaper-elevation8 {
+  box-shadow: none !important;
+  -webkit-filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.04));
+  filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.04));
+}
+
+.MuiPaper-rounded {
+  border-radius: 20px !important;
+}
+
+.MuiList-padding {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.MuiPopover-paper {
+  margin-top: 35px;
+}

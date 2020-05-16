@@ -87,7 +87,15 @@ class CreateCommentPost extends Component {
     ) : (
       <div className="commentCard">
         <div className="commentInfoContainer">
-          <p>You must be logged in to post a comment</p>
+          <p className="commentFormLoginHint">
+            You must be logged in to post a comment.
+          </p>
+          <Link to="/login">
+            <Button id="commentBtn" disabled={loading} color="primary">
+              Login
+              {loading && <Loadingdots />}
+            </Button>
+          </Link>
         </div>
       </div>
     );

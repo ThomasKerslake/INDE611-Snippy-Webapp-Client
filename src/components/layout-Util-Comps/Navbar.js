@@ -3,7 +3,9 @@ import { userLogout } from "../../redux/actions/userActions";
 import PropTypes from "prop-types";
 //Redux
 import { connect } from "react-redux";
-//Material UI - Import 1 by 1 (tree shaking) to reduce sizes / speed up loading
+//Components
+import UserNotifications from "../userComps/UserNotifications";
+//Material UI - Import separatly (tree shaking) to reduce sizes / speed up loading
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Link } from "react-router-dom";
@@ -44,11 +46,7 @@ class Navbar extends Component {
               <div className="navButtons">
                 <ul className="navActions">
                   <li className="notificationBtn">
-                    <Tooltip title="Notifications" placement="bottom">
-                      <IconButton>
-                        <NotificationsIcon color="secondary" />
-                      </IconButton>
-                    </Tooltip>
+                    <UserNotifications />
                   </li>
                   <li className="navUserProfile">
                     <Link to={`/users/${userName}`}>
@@ -102,7 +100,13 @@ class Navbar extends Component {
       )
     ) : (
       <AppBar>
-        <Toolbar className="navbarContainer"></Toolbar>
+        <Toolbar className="navbarContainer">
+          <div className="navLogoContainer">
+            <Link to="/">
+              <img src={snipLogo} id="navLogo" alt="Snippy Logo" />
+            </Link>
+          </div>
+        </Toolbar>
       </AppBar>
     );
 

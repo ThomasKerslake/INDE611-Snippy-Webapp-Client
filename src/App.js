@@ -64,6 +64,11 @@ class App extends Component {
               <AuthRoute exact path="/login" component={login} />
               <AuthRoute exact path="/signup" component={signup} />
               <Route exact path="/users/:userName" component={userpage} />
+              <Route
+                exact
+                path="/users/:userName/:snipId"
+                component={userpage}
+              />
             </Switch>
           </BRouter>
         </Provider>

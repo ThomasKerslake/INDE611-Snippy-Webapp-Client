@@ -5,7 +5,9 @@ import {
   LOADING_USER,
   LIKE_SNIPPET,
   UNLIKE_SNIPPET,
+  SET_NOTIFICATIONS_AS_READ,
 } from "../types";
+import { userNotificationsAction } from "../actions/userActions";
 
 const startingState = {
   userAuthenticated: false,
@@ -34,7 +36,15 @@ export default function (state = startingState, action) {
       return {
         userAuthenticated: true,
         loading: false,
-        ...action.payload, //spread info from payload to initalstate
+        ...action.payload,
+      };
+    case SET_NOTIFICATIONS_AS_READ:
+      //loop through each notification entry and set read to true
+      state.notifications.forEach(
+        (userNotification) => (userNotification.read = true)
+      );
+      return {
+        ...state,
       };
     case LIKE_SNIPPET:
       return {
@@ -57,6 +67,6 @@ export default function (state = startingState, action) {
         ),
       };
     default:
-      return state; //Retuern the state (initalState)
+      return state;
   }
 }

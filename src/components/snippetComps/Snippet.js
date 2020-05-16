@@ -50,7 +50,11 @@ class Snippet extends Component {
           <ul className="interactionSelection">
             {userDeleteButton}
             <LikeSnippetPost snipId={snipId} />
-            <SnippetExpandDetails snipId={snipId} userHandle={userHandle} />
+            <SnippetExpandDetails
+              snipId={snipId}
+              userHandle={userHandle}
+              openSnippetDialog={this.props.openSnippetDialog}
+            />
             <Tooltip title="Copy code!" placement="top">
               <li className="interactionItemCopy">
                 <FileCopyIcon className="copyIcon" />
@@ -120,6 +124,7 @@ class Snippet extends Component {
 Snippet.propTypes = {
   snip: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  openSnippetDialog: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

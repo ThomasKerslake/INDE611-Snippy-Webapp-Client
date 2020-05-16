@@ -11,6 +11,7 @@ import {
   POST_SNIPPET_COMMENT,
   SET_ERRORS,
   CLEAR_ERRORS,
+  SET_USERPAGE,
 } from "../types";
 import axios from "axios";
 
@@ -70,6 +71,8 @@ export const getUserPageDataAction = (userPageName) => (dispatch) => {
     .get(`/user/${userPageName}`)
     .then((res) => {
       dispatch({ type: SET_SNIPPETS, payload: res.data.snips });
+      dispatch({ type: SET_USERPAGE, payload: res.data.user });
+      console.log(res.data.user);
     })
     .catch((err) => {
       dispatch({ type: SET_SNIPPETS, payload: null });

@@ -58,3 +58,8 @@
   border: 1px solid #fcfcfc;
   background-color: #fcfcfc;
 }
+
+.commentFormLoginHint {
+  text-align: center;
+  font-weight: 500;
+}

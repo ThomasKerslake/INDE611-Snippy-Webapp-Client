@@ -5,6 +5,7 @@ import {
   LOADING_UI,
   SET_UNAUTHENTICATED,
   LOADING_USER,
+  SET_NOTIFICATIONS_AS_READ,
 } from "../types";
 import axios from "axios";
 //Taken from the login.js -> logging in a user
@@ -57,6 +58,15 @@ export const getUserInfo = () => (dispatch) => {
         type: SET_USER,
         payload: res.data,
       });
+    })
+    .catch((err) => console.log(err));
+};
+
+export const userNotificationsAction = (userNotification) => (dispatch) => {
+  axios
+    .post("/notifications", userNotification)
+    .then((res) => {
+      dispatch({ type: SET_NOTIFICATIONS_AS_READ });
     })
     .catch((err) => console.log(err));
 };

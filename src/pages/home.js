@@ -8,6 +8,7 @@ import { getSnippetsAction } from "../redux/actions/dataActions";
 import Snippet from "../components/snippetComps/Snippet.js";
 import HintToLogin from "../components/layout-Util-Comps/HintToLogin.js";
 import Loadingdots from "../components/layout-Util-Comps/Loadingdots.js";
+import SearchBar from "../components/layout-Util-Comps/SearchBar.js";
 import Navbar from "../components/layout-Util-Comps/Navbar";
 import CreateSnippetPost from "../components/snippetComps/CreateSnippetPost";
 //images
@@ -36,6 +37,7 @@ class home extends Component {
             <Grid container spacing={10}>
               <Grid item sm={2} xs={2} />
               <Grid item sm={8} xs={8}>
+                <SearchBar />
                 {latestSnippets}
               </Grid>
               <Grid item sm={2} xs={2}>

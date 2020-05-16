@@ -14,8 +14,8 @@ class DynamicUserPageSwitch extends Component {
   render() {
     dayjs.extend(relativeTime);
     const {
-      userPageProfile: { userName, createdAt, imageUrl, bio, website },
-    } = this.props;
+      userpage: { userName, createdAt, imageUrl, bio, website },
+    } = this.props.data;
 
     let loggedInUser = this.props.user.credentials.userName;
 
@@ -27,7 +27,7 @@ class DynamicUserPageSwitch extends Component {
           <div className="userProfileCard">
             <div className="userProfileBackgroundSlide"></div>
             <div className="userProfileImage">
-              <Tooltip title="Change picture" placement="top">
+              <Tooltip title={`${userName}'s picture`} placement="top">
                 <img
                   src={imageUrl}
                   className="userImage"
@@ -75,13 +75,13 @@ class DynamicUserPageSwitch extends Component {
 }
 
 DynamicUserPageSwitch.propTypes = {
-  userPageProfile: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 };
 
 //Bringing in the user global
 const mapStateToProps = (state) => ({
   user: state.user,
+  data: state.data,
 });
 
 export default connect(mapStateToProps)(DynamicUserPageSwitch);

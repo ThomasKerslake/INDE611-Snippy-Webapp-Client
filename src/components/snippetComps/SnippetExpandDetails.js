@@ -27,15 +27,35 @@ import DialogContent from "@material-ui/core/DialogContent";
 class SnippetExpandDetails extends Component {
   state = {
     dialogOpen: false,
+    originalUrlPath: "",
+    updatedUrlPath: "",
   };
+
+  componentDidMount() {
+    if (this.props.openSnippetDialog) {
+      this.openPostsDialog();
+    }
+  }
+
   //Open & close dialog window
   openPostsDialog = () => {
-    this.setState({ dialogOpen: true });
+    const { userHandle, snipId } = this.props;
+
+    //Get the current url path
+    let originalUrlPath = window.location.pathname;
+    //What path will corespond with the open snippet
+    const updatedUrlPath = `/users/${userHandle}/${snipId}`;
+    //push no data, no title, just url string
+    window.history.pushState(null, null, updatedUrlPath);
+
+    //upon opening the dialog window get /set original and updated paths
+    this.setState({ dialogOpen: true, originalUrlPath, updatedUrlPath });
     this.props.getSingleSnippetAction(this.props.snipId);
   };
-  //Close dialog and clear errors
+  //Close dialog, clear errors, and set url path back to original path
   closePostsDialog = () => {
     this.setState({ dialogOpen: false });
+    window.history.pushState(null, null, this.state.originalUrlPath);
     this.props.emptyErrorsFromState();
   };
 

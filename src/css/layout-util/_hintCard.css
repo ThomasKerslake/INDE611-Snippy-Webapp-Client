@@ -1,0 +1,132 @@
+/*----------------------------HintCard--------------------------------*/
+
+.hintCard {
+  margin: 0 auto 0 auto;
+  width: 400px;
+  height: 550px;
+  border-radius: 20px;
+  background: #ffffff;
+  overflow: hidden;
+  -webkit-filter: drop-shadow(0px 10px 0px rgba(0, 0, 0, 0.02));
+  filter: drop-shadow(0px 10px 0px rgba(0, 0, 0, 0.02));
+}
+
+.hintContainer {
+  margin: auto;
+  width: 360px;
+  margin-top: 30px;
+}
+
+.notMemberImage {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.closeBtn {
+  display: block;
+  float: right;
+  margin-right: 30px;
+  margin-top: 25px;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.closeBtn:hover {
+  transform: scale(1.2);
+}
+
+.memberLoginOrSignup {
+  list-style-type: none;
+  text-align: center;
+  margin: auto;
+}
+
+.joinUsText {
+  color: #4b4b4b;
+  text-align: center;
+}
+
+.hintSignupBtn,
+.hintLoginBtn,
+.orBreak {
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  color: #4b4b4b;
+}
+
+.hintSignupBtn {
+  padding-bottom: 2px;
+  border-bottom: #c06cfc solid 2px;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.hintSignupBtn:hover {
+  border-bottom: #c06cfc solid 4px;
+}
+
+.orBreak {
+  margin: 0 30px;
+  font-size: 0.8em;
+}
+
+.hintLoginBtn {
+  padding-bottom: 2px;
+  border-bottom: #c06cfc solid 2px;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.hintLoginBtn:hover {
+  border-bottom: #c06cfc solid 4px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ div.hintCard {
+  animation: fadeUp 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 1;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  30% {
+    opacity: 1;
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+  99% {
+    opacity: 0;
+    margin-top: -1000px;
+    margin-left: 0px;
+  }
+  100% {
+    opacity: 0;
+    margin-top: -1000px;
+    margin-left: -500px;
+    display: none;
+  }
+}
