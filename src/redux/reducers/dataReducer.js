@@ -8,6 +8,7 @@ import {
   UNLIKE_SNIPPET,
   LOADING_DATA,
   SET_USERPAGE,
+  CLEAR_USERPAGE,
 } from "../types";
 
 const startingState = {
@@ -87,6 +88,12 @@ export default function (state = startingState, action) {
       return {
         ...state,
         userpage: action.payload,
+        loading: false,
+      };
+    case CLEAR_USERPAGE:
+      return {
+        ...state,
+        userpage: [],
         loading: false,
       };
     default:

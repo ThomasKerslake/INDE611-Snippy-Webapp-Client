@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 //Components
 import UserNotifications from "../userComps/UserNotifications";
+import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
 //Material UI - Import separatly (tree shaking) to reduce sizes / speed up loading
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -105,6 +106,11 @@ class Navbar extends Component {
             <Link to="/">
               <img src={snipLogo} id="navLogo" alt="Snippy Logo" />
             </Link>
+          </div>
+          <div className="navActionsContainer">
+            <div id="navbarLoadingContainer">
+              <Loadingdots />
+            </div>
           </div>
         </Toolbar>
       </AppBar>

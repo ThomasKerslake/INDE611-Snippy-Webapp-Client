@@ -1,11 +1,12 @@
 // User types
 export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 export const SET_USER = "SET_USER";
-export const SET_USERPAGE = "SET_USERPAGE";
 export const SET_NOTIFICATIONS_AS_READ = "SET_NOTIFICATIONS_AS_READ";
 export const SET_UNAUTHENTICATED = "SET_UNAUTHENTICATED";
 
 //Data types
+export const SET_USERPAGE = "SET_USERPAGE";
+export const CLEAR_USERPAGE = "CLEAR_USERPAGE";
 export const SET_SNIPPETS = "SET_SNIPPETS";
 export const SET_SNIPPET = "SET_SNIPPET";
 export const POST_SNIPPET = "POST_SNIPPET";

@@ -11,15 +11,12 @@ import {
   POST_SNIPPET_COMMENT,
   SET_ERRORS,
   CLEAR_ERRORS,
+  CLEAR_USERPAGE,
   SET_USERPAGE,
 } from "../types";
 import axios from "axios";
 
 // Major actions
-//Used for removing error messages out of the state so they dont popup unnecessarily
-export const emptyErrorsFromState = () => (dispatch) => {
-  dispatch({ type: CLEAR_ERRORS });
-};
 
 //Used for when a user posts a new code snippet
 export const postSnippetAction = (newSnippetPost) => (dispatch) => {
@@ -72,7 +69,6 @@ export const getUserPageDataAction = (userPageName) => (dispatch) => {
     .then((res) => {
       dispatch({ type: SET_SNIPPETS, payload: res.data.snips });
       dispatch({ type: SET_USERPAGE, payload: res.data.user });
-      console.log(res.data.user);
     })
     .catch((err) => {
       dispatch({ type: SET_SNIPPETS, payload: null });
@@ -80,6 +76,16 @@ export const getUserPageDataAction = (userPageName) => (dispatch) => {
 };
 
 // Minor actions
+//Used for removing error messages out of the state so they dont popup unnecessarily
+export const emptyErrorsFromState = () => (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
+};
+
+//Used for removing old user page data out of the state so it wont popup unnecessarily
+export const emptyUserPageData = () => (dispatch) => {
+  dispatch({ type: CLEAR_USERPAGE });
+};
+
 //Deleting a users snippet
 export const deleteSnippetAction = (snipId) => (dispatch) => {
   axios

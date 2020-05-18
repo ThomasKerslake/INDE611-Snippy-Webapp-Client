@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import noSnippets from "../images/noSnippets.png";
 //Redux stuff
 import { connect } from "react-redux";
-import { getUserPageDataAction } from "../redux/actions/dataActions";
+import {
+  getUserPageDataAction,
+  emptyUserPageData,
+} from "../redux/actions/dataActions";
 //Components
 import Snippet from "../components/snippetComps/Snippet.js";
 import Loadingdots from "../components/layout-Util-Comps/Loadingdots.js";
@@ -31,6 +34,10 @@ class userpage extends Component {
     //app route for user page is /user/:userName, here we get that user name
     const userPageName = this.props.match.params.userName;
     this.props.getUserPageDataAction(userPageName);
+  }
+
+  componentWillUnmount() {
+    this.props.emptyUserPageData();
   }
 
   //Checking for any possible outcome for data to come back as empty
@@ -61,18 +68,20 @@ class userpage extends Component {
             <img src={noSnippets} alt="no snippets image" id="imageScale" />
           </div>
         </div>
-      </>
-    ) : !snippetParamId ? (
+      </> //For if a user links to a snippet post via a link / notification
+    ) : !snippetParamId ? ( //if no snippet paramId render users snippets as normal
       snippets.map((userPageSnippets) => (
         <Snippet key={userPageSnippets.snipId} snip={userPageSnippets} />
       ))
     ) : (
+      //if id of snippet does not match the same as the param render them as normal
       snippets.map((userPageSnippets) => {
         if (userPageSnippets.snipId !== snippetParamId) {
           return (
             <Snippet key={userPageSnippets.snipId} snip={userPageSnippets} />
           );
         } else {
+          //Else if the snippet does match, render the snippet in its expanded state (as its passed the prop openSnippetDialog...)
           return (
             <Snippet
               key={userPageSnippets.snipId}
@@ -129,6 +138,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   getUserPageDataAction,
+  emptyUserPageData,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(userpage);
