@@ -18,6 +18,12 @@ import { Tooltip } from "@material-ui/core";
 import { connect } from "react-redux";
 
 class Snippet extends Component {
+  //Gives a user the ability to copy all snippet content with a click a button / text area
+  copyAllSnippetContent = (event) => {
+    this.textArea.select();
+    document.execCommand("copy");
+    event.target.focus();
+  };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -40,7 +46,7 @@ class Snippet extends Component {
     } = this.props;
 
     const userDeleteButton =
-      userAuthenticated && userHandle == userName ? (
+      userAuthenticated && userHandle === userName ? (
         <DeleteUserSnippet snipId={snipId} />
       ) : null;
 
@@ -55,8 +61,12 @@ class Snippet extends Component {
               userHandle={userHandle}
               openSnippetDialog={this.props.openSnippetDialog}
             />
-            <Tooltip title="Copy code!" placement="top">
-              <li className="interactionItemCopy">
+            <Tooltip title="Copy!" placement="top">
+              <li
+                className="interactionItemCopy"
+                onClick={this.copyAllSnippetContent}
+                tabIndex="0"
+              >
                 <FileCopyIcon className="copyIcon" />
               </li>
             </Tooltip>
@@ -111,8 +121,16 @@ class Snippet extends Component {
           </label>
           <ul className="codeSnippetList">
             <div className="listSpaceBreak"></div>
-            <li className="codeSnippetItem">
-              <pre>{body}</pre>
+            <li
+              className="codeSnippetItem"
+              onClick={this.copyAllSnippetContent}
+            >
+              <textarea
+                ref={(textarea) => (this.textArea = textarea)}
+                value={body}
+                readOnly
+              />
+              <FileCopyIcon className="copyIcon copyHint" />
             </li>
           </ul>
         </div>

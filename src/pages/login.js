@@ -129,7 +129,10 @@ class login extends Component {
               </Button>
               <div className="bringForward">
                 <span id="noAccountRedirect">
-                  Dont have an account? <Link to="/signup">Sign up</Link>
+                  Dont have an account?{" "}
+                  <Link to="/signup">
+                    <span className="redirectHint">Sign up</span>
+                  </Link>
                 </span>
               </div>
             </form>

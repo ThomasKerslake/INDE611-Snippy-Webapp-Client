@@ -74,3 +74,20 @@ input[type="checkbox"]:checked ~ label.dropDownBtnDialog div.tempArrow {
   font-size: 1em;
   white-space: pre-wrap;
 } */
+
+.MuiDialog-paper::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.MuiDialog-paper::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf !important;
+  border-radius: 20px;
+}
+
+.MuiDialog-paper::-webkit-scrollbar-track {
+  background-color: #ffffff !important;
+  border-radius: 50px !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

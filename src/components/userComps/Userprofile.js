@@ -36,7 +36,7 @@ class Userprofile extends Component {
     dayjs.extend(relativeTime);
     const {
       user: {
-        credentials: { userName, imageUrl, createdAt, website, bio },
+        credentials: { userName, imageUrl, createdAt, website },
         loading,
         userAuthenticated,
       },
@@ -47,6 +47,14 @@ class Userprofile extends Component {
       userAuthenticated ? (
         <div className="userProfileContainer">
           <div className="userProfileCard">
+            <div className="userProfileNameBG">
+              <span className="userNameBG">{userName}</span>
+            </div>
+            <div className="userProfileName">
+              <Link to={`/users/${userName}`} className="userName">
+                {userName}
+              </Link>
+            </div>
             <div className="userProfileBackgroundSlide"></div>
             <div className="userProfileImage">
               <Tooltip title="Change picture" placement="top">
@@ -64,15 +72,9 @@ class Userprofile extends Component {
                 onChange={this.userUploadsImage}
               />
             </div>
-            <div className="userProfileName">
-              <Link to={`/users/${userName}`} className="userName">
-                {userName}
-              </Link>
-            </div>
             <div className="userProfileInfo">
               <div className="userExtraInfo">
                 <ul>
-                  <li>{bio && <h4 className="userBio">{bio}</h4>}</li>
                   <li>
                     {website && (
                       <a
@@ -81,7 +83,10 @@ class Userprofile extends Component {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <InsertLinkIcon color="primary" className="linkIcon" />
+                        <InsertLinkIcon
+                          color="secondary"
+                          className="linkIcon"
+                        />
                         {website}
                       </a>
                     )}

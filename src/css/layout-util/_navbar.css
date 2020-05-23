@@ -128,3 +128,21 @@
   transform: scale(0.6);
   margin-top: -10px;
 }
+
+@media (max-width: 550px) {
+  .navLogoContainer {
+    margin-left: -50px;
+  }
+  .navActionsContainer {
+    margin-right: 20px;
+  }
+
+  .logoutBtn {
+    top: 15px;
+    margin-right: 7px;
+  }
+
+  .notificationBtn {
+    margin-right: 25px;
+  }
+}

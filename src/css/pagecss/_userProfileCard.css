@@ -19,7 +19,9 @@ li a {
 }
 
 .userProfileImage {
-  margin: -90px auto 0 auto;
+  position: relative;
+  z-index: 4;
+  margin: -90px auto 0 70px;
   width: 170px;
   height: 170px;
   border-radius: 50%;
@@ -36,6 +38,8 @@ li a {
 }
 
 .userProfileBackgroundSlide {
+  position: relative;
+  z-index: 2;
   margin: 0 auto 0 auto;
   width: 100%;
   height: 130px;
@@ -44,18 +48,34 @@ li a {
 }
 
 .userProfileName {
+  position: absolute;
+  z-index: 3;
+  top: 60px;
+  left: 270px;
   margin-top: 20px;
-  margin-right: auto;
-  margin-left: auto;
-  width: inherit;
   text-align: center;
   cursor: pointer;
-  animation: fadeInFromBottom 1s ease-in-out;
+  animation: fadeInFromBottom 1.2s ease-in-out;
 }
 
-.userBio {
-  margin: 0 auto 10px auto;
-  color: #636363;
+.userProfileNameBG {
+  position: absolute;
+  z-index: 3;
+  top: -5px;
+  left: 33%;
+  margin-top: 20px;
+  text-align: center;
+  cursor: default;
+  animation: fadeInFromBottom 1.2s ease-in-out;
+}
+
+.userNameBG {
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  opacity: 0.12;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 6em;
 }
 
 .userJoinDate {
@@ -70,7 +90,7 @@ li a {
   font-weight: 400;
   font-size: 0.8em;
   color: #c06cfc;
-  margin: 0 auto 40px auto;
+  margin: 0 10px 40px auto;
 }
 
 .userLinks:hover {
@@ -78,31 +98,36 @@ li a {
   cursor: pointer;
 }
 
+.userExtraInfo ul li {
+  display: inline-block;
+}
+
 .userProfileInfo {
   display: flex;
-  margin: 10px auto 0 auto;
-  width: inherit;
+  margin: 10px 0;
+  width: auto;
 }
 
 .userExtraInfo {
   position: relative;
+  z-index: 1;
+  margin-top: -90px;
   margin-bottom: 20px;
-  width: inherit;
-  padding: 0 20px;
+  padding: 0 20px 0 260px;
   text-align: center;
   color: white;
 }
 
 .userName {
   font-family: "Montserrat", sans-serif;
-  color: #4b4b4b;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 1.8em;
 }
 
 .userName:hover {
-  color: #c06cfc;
+  color: #4d4d4d;
 }
 
 .linkIcon {
@@ -204,4 +229,113 @@ h4 {
   margin-right: 5px;
   margin-bottom: -5px;
   transform: scale(0.8);
+}
+
+/* phablet */
+@media (max-width: 680px) {
+  .userProfileImage {
+    position: relative;
+    z-index: 4;
+    margin: -90px auto 0 auto;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 7px solid white;
+    background: white;
+    overflow: hidden;
+    animation: imageSlide 1.5s;
+  }
+
+  .userProfileName {
+    position: absolute;
+    z-index: 3;
+    top: 210px;
+    left: 40%;
+    right: 40%;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+    animation: fadeInFromBottom 1.2s ease-in-out;
+  }
+
+  .userProfileNameBG {
+    position: absolute;
+    z-index: 3;
+    top: -5px;
+    left: 33%;
+    margin-top: 20px;
+    text-align: center;
+    cursor: default;
+    animation: fadeInFromBottom 1.2s ease-in-out;
+  }
+
+  .userNameBG {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    opacity: 0.14;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 6em;
+  }
+
+  .userJoinDate {
+    margin: 10px auto 15px auto;
+    color: #4b4b4b;
+    font-weight: 400;
+    font-size: 0.8em;
+  }
+
+  .userLinks {
+    color: #636363;
+    font-weight: 400;
+    font-size: 0.8em;
+    color: #c06cfc;
+    margin: 0 10px 40px auto;
+  }
+
+  .userLinks:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .userExtraInfo ul li {
+    display: block;
+  }
+
+  .userProfileInfo {
+    display: flex;
+    margin: 10px 0;
+    width: auto;
+  }
+
+  .userExtraInfo {
+    width: inherit;
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    padding: 0 40px 0 40px;
+    text-align: center;
+    color: white;
+  }
+
+  .userName {
+    font-family: "Montserrat", sans-serif;
+    color: #4d4d4d;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2em;
+  }
+
+  .userName:hover {
+    color: #4d4d4d;
+  }
+
+  .linkIcon {
+    margin-right: 5px;
+    margin-bottom: -7px;
+    transform: scale(0.8);
+  }
 }

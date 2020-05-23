@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 //Images / Other
 import NotaMember from "../../images/NotaMember.png";
-import Loadingdots from "../layout-Util-Comps/Loadingdots.js";
 
 class Userprofile extends Component {
   render() {

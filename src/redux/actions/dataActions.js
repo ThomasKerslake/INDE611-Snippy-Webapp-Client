@@ -44,6 +44,23 @@ export const getSingleSnippetAction = (snipId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const getSnippetByTypeAction = (snipType) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/snips/${snipType}`)
+    .then((res) => {
+      dispatch({ type: SET_SNIPPETS, payload: res.data });
+      dispatch({ type: END_UI_LOADING });
+    })
+    .catch((err) => {
+      //If error return empty object (no snippets)
+      dispatch({
+        type: SET_SNIPPETS,
+        payload: [],
+      });
+    });
+};
+
 //Get all snippets from database
 export const getSnippetsAction = () => (dispatch) => {
   dispatch({ type: LOADING_DATA });

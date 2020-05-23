@@ -14,17 +14,26 @@ class DynamicUserPageSwitch extends Component {
   render() {
     dayjs.extend(relativeTime);
     const {
-      userpage: { userName, createdAt, imageUrl, bio, website },
+      userpage: { userName, createdAt, imageUrl, website },
     } = this.props.data;
 
+    //Check if the logged in user is same as userName coming from getting the users data
+    //If they match, show button to edit website / allow users to change the profile images via clicking on image
     let loggedInUser = this.props.user.credentials.userName;
-
     const userStaticOrDynamicProfile =
       loggedInUser === userName ? (
         <Userprofile />
       ) : (
         <div className="userProfileContainer">
           <div className="userProfileCard">
+            <div className="userProfileNameBG">
+              <span className="userNameBG">{userName}</span>
+            </div>
+            <div className="userProfileName">
+              <Link to={`/users/${userName}`} className="userName">
+                {userName}
+              </Link>
+            </div>
             <div className="userProfileBackgroundSlide"></div>
             <div className="userProfileImage">
               <Tooltip title={`${userName}'s picture`} placement="top">
@@ -35,15 +44,9 @@ class DynamicUserPageSwitch extends Component {
                 />
               </Tooltip>
             </div>
-            <div className="userProfileName">
-              <Link to={`/users/${userName}`} className="userName">
-                {userName}
-              </Link>
-            </div>
             <div className="userProfileInfo">
               <div className="userExtraInfo">
                 <ul>
-                  <li>{bio && <h4 className="userBio">{bio}</h4>}</li>
                   <li>
                     {website && (
                       <a

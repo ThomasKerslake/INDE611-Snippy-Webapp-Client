@@ -159,7 +159,10 @@ class signup extends Component {
 
               <div className="bringForward">
                 <span id="noAccountRedirect">
-                  Already have an account?<Link to="/login">Login</Link>
+                  Already have an account?{" "}
+                  <Link to="/login">
+                    <span className="redirectHint">Login</span>
+                  </Link>
                 </span>
               </div>
             </form>

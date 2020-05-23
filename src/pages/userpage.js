@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
-import axios from "axios";
 import { Link } from "react-router-dom";
 //images
 import noSnippets from "../images/noSnippets.png";
@@ -65,7 +64,7 @@ class userpage extends Component {
         </h1>
         <div className="noSnippetImageContainer">
           <div id="noSnippetsImage">
-            <img src={noSnippets} alt="no snippets image" id="imageScale" />
+            <img src={noSnippets} alt="no snippets" id="imageScale" />
           </div>
         </div>
       </> //For if a user links to a snippet post via a link / notification
@@ -109,7 +108,7 @@ class userpage extends Component {
                     </span>
                   </Link>
                 </div>
-                {this.checkEmpty(this.props.data) ? (
+                {this.checkEmpty(this.props.data.userpage) ? (
                   <Loadingdots />
                 ) : (
                   <DynamicUserPageSwitch />

@@ -7,7 +7,6 @@ import {
   UNLIKE_SNIPPET,
   SET_NOTIFICATIONS_AS_READ,
 } from "../types";
-import { userNotificationsAction } from "../actions/userActions";
 
 const startingState = {
   userAuthenticated: false,

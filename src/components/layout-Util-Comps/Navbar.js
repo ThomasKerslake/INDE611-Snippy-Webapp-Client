@@ -12,9 +12,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@material-ui/core";
 //Icons
-import { IconButton } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 //images
 import snipLogo from "../../images/snippyLogoName.png";
 
@@ -37,7 +35,7 @@ class Navbar extends Component {
         <AppBar>
           <Toolbar className="navbarContainer">
             <div className="navLogoContainer">
-              <Link to="/">
+              <Link to="/" onClick={() => (window.location.href = "/")}>
                 <Tooltip title="Home" placement="bottom">
                   <img src={snipLogo} id="navLogo" alt="Snippy Logo" />
                 </Tooltip>
@@ -50,7 +48,12 @@ class Navbar extends Component {
                     <UserNotifications />
                   </li>
                   <li className="navUserProfile">
-                    <Link to={`/users/${userName}`}>
+                    <Link
+                      to={`/users/${userName}`}
+                      onClick={() =>
+                        (window.location.href = `/users/${userName}`)
+                      }
+                    >
                       <div className="navUserContainer">
                         <Tooltip
                           title={`Profile: ${userName}`}

@@ -44,20 +44,28 @@ class LikeSnippetPost extends Component {
     const userLikeButton = !userAuthenticated ? (
       <Tooltip title="Like" placement="top">
         <Link to="/login">
-          <li className="interactionItemLike">
+          <li className="interactionItemLike" tabIndex="0">
             <FavoriteBorderIcon className="likeIcon" />
           </li>
         </Link>
       </Tooltip>
     ) : this.userLikedSnippet() ? (
       <Tooltip title="un-like" placement="top">
-        <li className="interactionItemLike" onClick={this.unlikeSnippet}>
+        <li
+          className="interactionItemLike"
+          onClick={this.unlikeSnippet}
+          tabIndex="0"
+        >
           <FavoriteIcon className="likeIcon" />
         </li>
       </Tooltip>
     ) : (
       <Tooltip title="like" placement="top">
-        <li className="interactionItemLike" onClick={this.likeSnippet}>
+        <li
+          className="interactionItemLike"
+          onClick={this.likeSnippet}
+          tabIndex="0"
+        >
           <FavoriteBorderIcon className="likeIcon" />
         </li>
       </Tooltip>

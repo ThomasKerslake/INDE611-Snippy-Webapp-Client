@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 //Matireal UI
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import { Tooltip } from "@material-ui/core";
 
 class CommentSnippetPost extends Component {
@@ -13,13 +11,7 @@ class CommentSnippetPost extends Component {
     return (
       <>
         {comments.map((userComment, index) => {
-          const {
-            body,
-            createdAt,
-            snipId,
-            userHandle,
-            userProfileImage,
-          } = userComment;
+          const { body, createdAt, userHandle, userProfileImage } = userComment;
 
           //Use createdAt and index to provide a reliable unqie key
           return (
@@ -28,7 +20,12 @@ class CommentSnippetPost extends Component {
                 <div className="commentInfoContainer">
                   <Grid container spacing={0}>
                     <Grid item sm={2} xs={2}>
-                      <Link to={`/users/${userHandle}`}>
+                      <Link
+                        to={`/users/${userHandle}`}
+                        onClick={() =>
+                          (window.location.href = `/users/${userHandle}`)
+                        }
+                      >
                         <Tooltip title={userHandle} placement="bottom">
                           <div className="commentImage">
                             <img

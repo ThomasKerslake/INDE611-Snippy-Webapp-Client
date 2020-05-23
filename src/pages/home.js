@@ -22,7 +22,7 @@ class home extends Component {
 
   render() {
     const { snippets, loading } = this.props.data;
-    //Checking for snips -> else say loading...
+    //Checking for snips -> else loading...
     let latestSnippets = !loading ? (
       snippets.map((snippet) => <Snippet key={snippet.snipId} snip={snippet} />)
     ) : (

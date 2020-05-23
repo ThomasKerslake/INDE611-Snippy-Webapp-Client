@@ -19,6 +19,7 @@ import AuthRoute from "./util/AuthRoute";
 //My pages
 import home from "./pages/home";
 import userpage from "./pages/userpage";
+import landingpage from "./pages/landingpage";
 import login from "./pages/login";
 import signup from "./pages/signup";
 
@@ -61,6 +62,8 @@ class App extends Component {
           <BRouter>
             <Switch>
               <Route exact path="/" component={home} />
+              <Route exact path="/landing" component={landingpage} />
+              <Route exact path="/search/:snipType" component={home} />
               <AuthRoute exact path="/login" component={login} />
               <AuthRoute exact path="/signup" component={signup} />
               <Route exact path="/users/:userName" component={userpage} />

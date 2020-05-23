@@ -18,12 +18,10 @@ class EdituserInfo extends Component {
   state = {
     dialogOpen: false,
     website: "",
-    bio: "",
   };
 
   mapUserInfo = (credentials) => {
     this.setState({
-      bio: credentials.bio ? credentials.bio : "",
       website: credentials.website ? credentials.website : "",
     });
   };
@@ -56,7 +54,6 @@ class EdituserInfo extends Component {
   //Using function for updating user info from user actions -> passing new info
   submitUserInfo = () => {
     const userInfo = {
-      bio: this.state.bio,
       website: this.state.website,
     };
     this.props.updateUserInfo(userInfo);
@@ -80,23 +77,10 @@ class EdituserInfo extends Component {
         >
           <div className="dialogWrapper">
             <DialogTitle className="dialogTitle">
-              Update your profile details
+              Add / Update your website link
             </DialogTitle>
             <DialogContent>
               <form>
-                <TextField
-                  name="bio"
-                  type="text"
-                  label="About you"
-                  multiline
-                  rows="2"
-                  placeholder="What stuff do you make?"
-                  className="standardTextInput"
-                  value={this.state.bio}
-                  onChange={this.takeChange}
-                  fullWidth
-                />
-                <div className="textFieldBreak"></div>
                 <TextField
                   name="website"
                   type="text"

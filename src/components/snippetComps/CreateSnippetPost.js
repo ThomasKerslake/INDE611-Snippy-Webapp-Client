@@ -22,7 +22,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
 
 const options = [
@@ -33,7 +32,7 @@ const options = [
   "C++",
   "CSS",
   "Django",
-  "HTML/CSS",
+  "HTML-CSS",
   "Java",
   "JavaScript",
   "jQuery",
@@ -42,7 +41,7 @@ const options = [
   "Python",
   "Ruby",
   "Objective-C",
-  "React/Redux",
+  "React",
   "React-Native",
   "SQL",
   "SASS",
@@ -136,12 +135,11 @@ class CreateSnippetPost extends Component {
     return (
       <>
         {userPostButton}
-
         <Dialog
           open={this.state.dialogOpen}
           onClose={this.closeSnippetPostDialog}
           fullWidth
-          maxWidth="sm"
+          maxWidth="md"
         >
           <div className="dialogWrapper">
             <DialogTitle className="dialogTitle">
@@ -166,6 +164,8 @@ class CreateSnippetPost extends Component {
                   name="snipDescription"
                   type="text"
                   label="Description"
+                  multiline
+                  rows="3"
                   placeholder="Whats does it do, any extra details..."
                   className="standardTextInput"
                   helperText={errors.snipDescription}
@@ -196,12 +196,15 @@ class CreateSnippetPost extends Component {
                 </FormControl>
                 <div className="textFieldBreak"></div>
                 <TextField
+                  spellCheck="false"
                   name="body"
                   type="text"
-                  label="Your code snippet"
+                  label="Your code snippet(s)"
                   multiline
-                  rows="5"
+                  rows="20"
+                  rowsMax="20"
                   placeholder="console.log('This is some amazing code');"
+                  id="dialogCodeInputField"
                   className="standardTextInput"
                   helperText={errors.body}
                   error={errors.body ? true : false}
@@ -209,7 +212,6 @@ class CreateSnippetPost extends Component {
                   onChange={this.takeChange}
                   fullWidth
                 />
-
                 <DialogActions className="postBtnContainer">
                   <Button onClick={this.closeSnippetPostDialog} color="primary">
                     Cancel

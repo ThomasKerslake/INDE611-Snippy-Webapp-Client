@@ -20,6 +20,10 @@
   border-color: #ffffff;
 }
 
+option {
+  color: #4d4d4d !important;
+}
+
 .searchBtn {
   color: #ffffff;
   transform: scale(1.3);

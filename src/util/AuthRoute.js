@@ -24,4 +24,4 @@ const mapStateToProps = (state) => ({
 AuthRoute.propTypes = {
   user: PropTypes.object,
 };
-export default connect(mapStateToProps)(AuthRoute);
+export default connect(mapStateToProps, {})(AuthRoute);

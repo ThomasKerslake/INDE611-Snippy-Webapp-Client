@@ -140,10 +140,11 @@ span {
 
 .welcomeText-1 {
   position: absolute;
-  top: 140px;
-  left: 920px;
   font-size: 9em;
+  z-index: -3;
   color: white;
+  animation: WT1-slide 1.7s ease-in-out;
+  animation-fill-mode: forwards;
 }
 .welcomeText-2 {
   position: absolute;
@@ -154,10 +155,38 @@ span {
 }
 .welcomeText-3 {
   position: absolute;
-  top: 830px;
-  right: 100px;
   font-size: 2.5em;
   color: #73a1bc;
+  top: 830px;
+  right: 100px;
+}
+
+@keyframes WT1-slide {
+  0% {
+    position: absolute;
+    top: -640px;
+    left: 920px;
+  }
+  50% {
+    position: absolute;
+    top: 165px;
+    left: 920px;
+  }
+  75% {
+    position: absolute;
+    top: 120px;
+    left: 920px;
+  }
+  92% {
+    position: absolute;
+    top: 145px;
+    left: 920px;
+  }
+  100% {
+    position: absolute;
+    top: 140px;
+    left: 920px;
+  }
 }
 
 /*--------------------------------Login&Signup-----------------------------------*/
@@ -210,6 +239,11 @@ span {
   margin-right: 5px;
   margin-bottom: -5px;
   transform: scale(0.8);
+}
+
+.redirectHint {
+  text-decoration: underline;
+  color: #c576ed;
 }
 
 /*--------------------------Sign-up---------------------------*/
@@ -326,7 +360,7 @@ span {
   }
 
   .loginSignupContainer {
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
   }
 }
 
