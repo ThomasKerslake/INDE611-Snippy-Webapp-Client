@@ -140,8 +140,8 @@ class SnippetExpandDetails extends Component {
             </label>
             <ul className="codeSnippetList">
               <div className="listSpaceBreak"></div>
-              <li className="dialogCodeSnippetItem">
-                <pre>{body}</pre>
+              <li className="codeSnippetItem">
+                <textarea value={body} readOnly />
               </li>
             </ul>
           </div>

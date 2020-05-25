@@ -51,7 +51,6 @@ class login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    //Taken from login props that has had the global props added to it (see more at bottom)
     this.props.userLogin(userInfo, this.props.history);
   };
 

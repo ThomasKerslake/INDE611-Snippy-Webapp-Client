@@ -58,7 +58,6 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       userName: this.state.userName,
     };
-    //Using the signup function from userActions that is added here from the global state (see bottem)
     this.props.userSignup(newUserInfo, this.props.history);
   };
 
@@ -180,8 +179,7 @@ signup.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 
-//Bringing in the user and UI from the global state to be used within this signup component
-//This is due to needing to use the states for users signing up
+//Bringing in the user and UI from the global state
 const mapStateToProps = (state) => ({
   user: state.user,
   UI: state.UI,
