@@ -57,7 +57,7 @@ home.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-// data: found in store.js that has dataReducer attached -> to home
+// Bring in global data state
 const mapStateToProps = (state) => ({
   data: state.data,
 });

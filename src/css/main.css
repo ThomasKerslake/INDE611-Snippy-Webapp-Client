@@ -37,6 +37,10 @@ body {
   overflow: hidden;
 }
 
+.bgColourSwitch {
+  background-color: #ffffff;
+}
+
 #largeBG {
   position: fixed;
   background-repeat: no-repeat;

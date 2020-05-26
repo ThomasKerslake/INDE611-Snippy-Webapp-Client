@@ -14,14 +14,15 @@ import vscodeLogo from "../images/vscodeLogo.png";
 import LandingpageSVGs from "../components/pagesvgs/LandingSVGs";
 
 const overflowSET = "overflowSwitch";
+const bgColourSwitch = "bgColourSwitch";
 class landingpage extends Component {
-  //Used to set the bodies overflow to hidden when signup mounts
+  //Used to set the bodies overflow hidden + background colour white when the landing page mounts
   componentDidMount() {
-    document.body.classList.add(overflowSET);
+    document.body.classList.add(overflowSET, bgColourSwitch);
   }
-  //Used to remove style overflowSet when signup unmounts so its not affecting other pages
+  //Used to remove the bodies overflow hidden + background colour white when the landing page unmounts
   componentWillUnmount() {
-    document.body.classList.remove(overflowSET);
+    document.body.classList.remove(overflowSET, bgColourSwitch);
   }
   render() {
     return (
