@@ -23,6 +23,11 @@ import landingpage from "./pages/landingpage";
 import login from "./pages/login";
 import signup from "./pages/signup";
 
+//Setting the baseURL for axios to work when hosted on firebase
+axios.defaults.baseURL =
+  "https://europe-west1-snippy-929af.cloudfunctions.net/api";
+
+//To be used for setting the color for most Material UI elements
 const myTheme = createMuiTheme({
   palette: {
     primary: {
