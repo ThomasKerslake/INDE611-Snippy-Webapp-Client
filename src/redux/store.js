@@ -16,10 +16,12 @@ const reducersState = combineReducers({
   UI: uiReducer,
 });
 
-const store = createStore(
-  reducersState,
-  startingState,
-  compose(applyMiddleware(...middleware))
-);
+//This is essentially for checking if there is the redux dev tools extension
+const constructEnhancers =
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//Without this, if you try to view the app without the redux dev tools it will run into an error -> not show app
+const getEnhancer = constructEnhancers(applyMiddleware(...middleware));
+
+const store = createStore(reducersState, startingState, getEnhancer);
 
 export default store;
