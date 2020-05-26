@@ -60,7 +60,7 @@ class Userprofile extends Component {
               <Tooltip title="Change picture" placement="top">
                 <img
                   src={imageUrl}
-                  className="userImage"
+                  className="userImage changeImageHover"
                   alt="UserProfileImage"
                   onClick={this.initiatePictureChange}
                 />

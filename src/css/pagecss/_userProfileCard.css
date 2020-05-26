@@ -37,6 +37,13 @@ li a {
   cursor: pointer;
 }
 
+.changeImageHover:hover {
+  opacity: 0.75;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
 .userProfileBackgroundSlide {
   position: relative;
   z-index: 2;

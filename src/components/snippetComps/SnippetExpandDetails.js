@@ -148,7 +148,7 @@ class SnippetExpandDetails extends Component {
         </div>
         <CreateCommentPost snipId={snipId} />
         <hr id="commentBreaker" />
-        <CommentSnippetPost comments={comments} />
+        <CommentSnippetPost postowner={userHandle} comments={comments} />
       </>
     );
 

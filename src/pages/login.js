@@ -79,62 +79,66 @@ class login extends Component {
         </Link>
 
         <div className="welcomeTextContainer">
-          <span className="welcomeText-1">Hi</span>
-          <span className="welcomeText-2">Nice to meet you,</span>
-          <span className="welcomeText-3">welcome to Snippy.</span>
+          <span className="welcomeText-1">Hi,</span>
+          <span className="welcomeText-2">long time no see.</span>
+          <span className="welcomeText-3">Welcome back!</span>
         </div>
         <img src={symbolBG} id="symbolBG" alt="background" />
         <div className="loginSignupContainer">
           <div className="spaceBlock"></div>
-          <img src={snipLogo} id="snippyLogo" alt="Snippy Logo" />
-          <div className="centerLogin">
-            <form noValidate onSubmit={this.takeSubmit}>
-              <TextField
-                id="email"
-                name="email"
-                type="email"
-                label="Email"
-                helperText={errors.email}
-                error={errors.email ? true : false} //if error in errors.email -> true : 'else' false
-                value={this.state.email}
-                onChange={this.takeChange}
-                fullWidth
-              />
+          <div className="logoWrapper">
+            <img src={snipLogo} id="snippyLogo" alt="Snippy Logo" />
+          </div>
+          <div className="formWrapper">
+            <div className="centerLogin">
+              <form noValidate onSubmit={this.takeSubmit}>
+                <TextField
+                  id="email"
+                  name="email"
+                  type="email"
+                  label="Email"
+                  helperText={errors.email}
+                  error={errors.email ? true : false} //if error in errors.email -> true : 'else' false
+                  value={this.state.email}
+                  onChange={this.takeChange}
+                  fullWidth
+                />
 
-              <TextField
-                id="password"
-                name="password"
-                type="password"
-                label="Password"
-                helperText={errors.password}
-                error={errors.password ? true : false} //if error in errors.password -> true : 'else' false
-                value={this.state.password}
-                onChange={this.takeChange}
-                fullWidth
-              />
+                <TextField
+                  id="password"
+                  name="password"
+                  type="password"
+                  label="Password"
+                  helperText={errors.password}
+                  error={errors.password ? true : false} //if error in errors.password -> true : 'else' false
+                  value={this.state.password}
+                  onChange={this.takeChange}
+                  fullWidth
+                />
 
-              {errors.general && (
-                <span id="incorrectError">{errors.general}</span>
-              )}
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                id="loginButton"
-                disabled={loading}
-              >
-                Login
-                {loading && <Loadingdots />}
-              </Button>
-              <div className="bringForward">
-                <span id="noAccountRedirect">
-                  Dont have an account?{" "}
-                  <Link to="/signup">
-                    <span className="redirectHint">Sign up</span>
-                  </Link>
-                </span>
-              </div>
-            </form>
+                {errors.general && (
+                  <span id="incorrectError">{errors.general}</span>
+                )}
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  id="loginButton"
+                  disabled={loading}
+                >
+                  Login
+                  {loading && <Loadingdots />}
+                </Button>
+                <div className="bringForward">
+                  <span id="noAccountRedirect">
+                    Dont have an account?{" "}
+                    <Link to="/signup">
+                      <span className="redirectHint">Sign up</span>
+                    </Link>
+                  </span>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <LoginSVGs />

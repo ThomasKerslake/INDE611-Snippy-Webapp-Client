@@ -57,3 +57,17 @@ input #searchBarTextInput {
 .MuiInput-root {
   border-bottom-color: #ffffff !important;
 }
+
+/* mobile */
+@media (max-width: 650px) {
+  .searchBar {
+    width: 55%;
+  }
+}
+
+/* mobile */
+@media (max-width: 450px) {
+  .searchBar {
+    padding: 15px 45px 45px 25px;
+  }
+}

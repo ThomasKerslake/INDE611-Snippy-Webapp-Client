@@ -64,7 +64,7 @@ class EdituserInfo extends Component {
     return (
       <>
         <div className="editInfoBtn" onClick={this.openDialog}>
-          <Tooltip title="Update your details">
+          <Tooltip title="Add portfolio link">
             <PostAddIcon />
           </Tooltip>
         </div>
